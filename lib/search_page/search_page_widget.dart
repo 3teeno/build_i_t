@@ -32,7 +32,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
-      body: SafeArea(
+      body: SingleChildScrollView (
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
