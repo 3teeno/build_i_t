@@ -1,3 +1,5 @@
+import 'package:build_i_t/login_page/login_page_widget.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -134,8 +136,10 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () {
-                        print('Button pressed ...');
-                      },
+                        MaterialPageRoute(
+                        builder: (context) => LoginPageWidget(),
+                        );
+                        },
                       text: 'Reset Password',
                       options: FFButtonOptions(
                         width: 275,
@@ -160,7 +164,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageWidget(),
+                            builder: (context) => LoginPageWidget(),
                           ),
                         );
                       },

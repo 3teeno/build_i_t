@@ -1,3 +1,5 @@
+import 'package:build_i_t/login_page/login_page_widget.dart';
+
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -356,7 +358,9 @@ class _RegistrationPageCopyWidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () {
-                        print('Button pressed ...');
+                        MaterialPageRoute(
+                          builder: (context) => HomePageWidget(),
+                        );
                       },
                       text: 'Sign Up',
                       options: FFButtonOptions(
@@ -382,7 +386,7 @@ class _RegistrationPageCopyWidgetState
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageWidget(),
+                            builder: (context) => LoginPageWidget(),
                           ),
                         );
                       },

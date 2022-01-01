@@ -1,12 +1,15 @@
-import '../flutter_flow/flutter_flow_drop_down.dart';
+import 'package:build_i_t/all_market_places/all_market_places_widget.dart';
+import 'package:build_i_t/search_page/search_page_widget.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../registration_page/registration_page_widget.dart';
-import '../registration_page_copy/registration_page_copy_widget.dart';
+import '../market_place/market_place_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key key}) : super(key: key);
@@ -16,19 +19,22 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  
-  String dropDownValue;
-  TextEditingController textController1;
-  TextEditingController textController2;
-  bool passwordVisibility;
+  TextEditingController textController;
+  double ratingBarValue1;
+  double ratingBarValue2;
+  double ratingBarValue3;
+  double ratingBarValue4;
+  double ratingBarValue5;
+  double ratingBarValue6;
+  double ratingBarValue7;
+  double ratingBarValue8;
+  double ratingBarValue9;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    passwordVisibility = false;
+    textController = TextEditingController();
   }
 
   @override
@@ -36,299 +42,1683 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
-      body:
-      SingleChildScrollView (
+      drawer: Drawer(
+        elevation: 16,
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.55, 0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  child: Lottie.network(
+                    'https://assets3.lottiefiles.com/packages/lf20_byuzwmds.json',
+                    width: 250,
+                    height: 180,
+                    fit: BoxFit.cover,
+                    animate: true,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                  child: Image.asset(
+                    'assets/images/BuildIt.png',
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: 30,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                      child: InkWell(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePageWidget(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF282828),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 0, 0),
+                                  child: Text(
+                                    'Profile',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                      child: InkWell(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePageWidget(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF282828),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.chat,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 0, 0),
+                                  child: Text(
+                                    'Chat',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF282828),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.border_all_outlined,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Text(
+                                  'Orders',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF282828),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.support_agent_rounded,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Text(
+                                  'Customer Support',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF282828),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.logout,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Text(
+                                  'Logout',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
-                  child: Image.asset(
-                    'assets/images/welcome.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ),
-            FlutterFlowDropDown(
-              options: ['Customer', 'Vendor', 'Service Provider'].toList(),
-              onChanged: (val) => setState(() => dropDownValue = val),
-              width: 275,
-              height: 50,
-              textStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Colors.white,
-              ),
-              fillColor: Color(0xFF282828),
-              elevation: 2,
-              borderColor: Colors.transparent,
-              borderWidth: 1.5,
-              borderRadius: 0,
-              margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-              hidesUnderline: true,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(50, 12, 50, 0),
-              child: TextFormField(
-                controller: textController1,
-                obscureText: false,
-                decoration: InputDecoration(
-                  isDense: true,
-                  labelText: 'Username',
-                  labelStyle: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF282828),
-                    lineHeight: 2,
-                  ),
-                  hintText: 'Enter username',
-                  hintStyle: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF282828),
-                    lineHeight: 2,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF282828),
-                      width: 2,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+            Container(
+              height: 150,
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 125,
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width,
+                        maxHeight: 125,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF282828),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Align(
+                        alignment: AlignmentDirectional(-1, 0),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(-1, 0.4),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                child: Image.asset(
+                                  'assets/images/BuildIt_V002.png',
+                                  width: 130,
+                                  height: 50,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(-0.9, -0.75),
+                              child: InkWell(
+                                onTap: () async {
+                                  scaffoldKey.currentState.openDrawer();
+                                },
+                                child: Icon(
+                                  Icons.menu_sharp,
+                                  color: Color(0xFFF6EFDE),
+                                  size: 30,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF282828),
-                      width: 2,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                style: FlutterFlowTheme.bodyText1.override(
-                  fontFamily: 'Poppins',
-                  color: Color(0xFF282828),
-                  lineHeight: 2,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(50, 12, 50, 0),
-              child: TextFormField(
-                controller: textController2,
-                obscureText: !passwordVisibility,
-                decoration: InputDecoration(
-                  isDense: true,
-                  labelText: 'Password',
-                  labelStyle: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF282828),
-                    lineHeight: 2,
-                  ),
-                  hintText: 'Enter password',
-                  hintStyle: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF282828),
-                    lineHeight: 2,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF282828),
-                      width: 1.5,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+                  Align(
+                    alignment: AlignmentDirectional(0.9, -0.4),
+                    child: Lottie.network(
+                      'https://assets3.lottiefiles.com/packages/lf20_zJLfwG.json',
+                      width: 130,
+                      height: 110,
+                      fit: BoxFit.cover,
+                      animate: true,
                     ),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF282828),
-                      width: 1.5,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Align(
+                          alignment: AlignmentDirectional(0, 0.95),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 0, 5, 0),
+                            child: TextFormField(
+                              controller: textController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                hintText: 'Search',
+                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFFC4C4C4),
+                                  fontStyle: FontStyle.italic,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFF282828),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFF282828),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 30, 0, 0),
+                              ),
+                              style: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFFC4C4C4),
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.15, 0.9),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+                          child: FFButtonWidget(
+                            onPressed: () {
+                              MaterialPageRoute(
+                                builder: (context) =>SearchPageWidget(),
+                              );
+                            },
+                            text: '',
+                            icon: Icon(
+                              Icons.search,
+                              color: Color(0xFF212121),
+                              size: 15,
+                            ),
+                            options: FFButtonOptions(
+                              width: 40,
+                              height: 40,
+                              color: Color(0xFFF4BB03),
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  suffixIcon: InkWell(
-                    onTap: () => setState(
-                      () => passwordVisibility = !passwordVisibility,
-                    ),
-                    child: Icon(
-                      passwordVisibility
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined,
-                      color: Color(0xFF282828),
-                      size: 22,
-                    ),
-                  ),
-                ),
-                style: FlutterFlowTheme.bodyText1.override(
-                  fontFamily: 'Poppins',
-                  color: Color(0xFF282828),
-                  lineHeight: 2,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePageWidget(),
-                    ),
-                  );
-                },
-                text: 'Sign In',
-                options: FFButtonOptions(
-                  width: 275,
-                  height: 45,
-                  color: Color(0xFF282828),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFFFFB700),
-                  ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
-                  ),
-                  borderRadius: 0,
-                ),
+                ],
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-              child: InkWell(
-                onTap: () async {
-                  await Navigator.push(
-                    context,
-                    PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      duration: Duration(milliseconds: 300),
-                      reverseDuration: Duration(milliseconds: 300),
-                      child: RegistrationPageWidget(),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                children: [
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(-0.1, -0.05),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                          child: FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: 'Build Your Home',
+                            options: FFButtonOptions(
+                              width: 340,
+                              height: 45,
+                              color: Color(0xFF282828),
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFFFFB700),
+                                fontWeight: FontWeight.normal,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 10,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-0.85, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                            child: AutoSizeText(
+                              'Market Places',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0, -0.1),
+                          child: InkWell(
+                        onTap:  () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllMarketPlacesWidget(),
+                                ),
+                              );
+                          },
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                              child: AutoSizeText(
+                                'See all',
+                                textAlign: TextAlign.start,
+
+                                style: FlutterFlowTheme.title3.override(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFF4F4F4F),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                },
-                child: Text(
-                  'Forgot Password?',
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    fontSize: 12,
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-              child: InkWell(
-                onTap: () async {
-                  await Navigator.push(
-                    context,
-                    PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      duration: Duration(milliseconds: 300),
-                      reverseDuration: Duration(milliseconds: 300),
-                      child: RegistrationPageCopyWidget(),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child: MarketPlaceWidget(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 150,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF282828),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          2, 3, 2, 5),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg',
+                                          width: 150,
+                                          height: 108,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Text(
+                                        'Shop Name',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 2, 0, 0),
+                                      child: RatingBar.builder(
+                                        onRatingUpdate: (newValue) => setState(
+                                            () => ratingBarValue1 = newValue),
+                                        itemBuilder: (context, index) => Icon(
+                                          Icons.star_rounded,
+                                          color: Color(0xFFFFB700),
+                                        ),
+                                        direction: Axis.horizontal,
+                                        initialRating: ratingBarValue1 ??= 4,
+                                        unratedColor: Color(0xFF9E9E9E),
+                                        itemCount: 5,
+                                        itemSize: 15,
+                                        glowColor: Color(0xFFFFB700),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 2, 8, 0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.location_on,
+                                            color: Color(0xFFF6EFDE),
+                                            size: 15,
+                                          ),
+                                          Text(
+                                            'Loney Wala',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFF6EFDE),
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child: MarketPlaceWidget(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 150,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF282828),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          2, 3, 2, 5),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          'https://media.istockphoto.com/photos/engineer-architect-construction-worker-on-construction-site-with-picture-id1277749962?b=1&k=20&m=1277749962&s=170667a&w=0&h=t3e7fgshn1xCM1mPuoskaSm6atLPhpZN07ImxDN7rgQ=',
+                                          width: 150,
+                                          height: 108,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Text(
+                                        'Shop Name',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 2, 0, 0),
+                                      child: RatingBar.builder(
+                                        onRatingUpdate: (newValue) => setState(
+                                            () => ratingBarValue2 = newValue),
+                                        itemBuilder: (context, index) => Icon(
+                                          Icons.star_rounded,
+                                          color: Color(0xFFFFB700),
+                                        ),
+                                        direction: Axis.horizontal,
+                                        initialRating: ratingBarValue2 ??= 4,
+                                        unratedColor: Color(0xFF9E9E9E),
+                                        itemCount: 5,
+                                        itemSize: 15,
+                                        glowColor: Color(0xFFFFB700),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 2, 8, 0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.location_on,
+                                            color: Color(0xFFF6EFDE),
+                                            size: 15,
+                                          ),
+                                          Text(
+                                            'Loney Wala',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFFF6EFDE),
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 150,
+                            height: 180,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 3, 2, 5),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHwwfHw%3D&w=1000&q=80',
+                                        width: 150,
+                                        height: 108,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 0, 0, 0),
+                                    child: Text(
+                                      'Shop Name',
+                                      style:
+                                          FlutterFlowTheme.bodyText1.override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue3 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue3 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 15,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 8, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.location_on,
+                                          color: Color(0xFFF6EFDE),
+                                          size: 15,
+                                        ),
+                                        Text(
+                                          'Loney Wala',
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFFF6EFDE),
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 150,
+                            height: 180,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 2, 2, 5),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0),
+                                      child: Image.network(
+                                        'https://picsum.photos/seed/506/600',
+                                        width: 150,
+                                        height: 108,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 0, 0, 0),
+                                    child: Text(
+                                      'Shop Name',
+                                      style:
+                                          FlutterFlowTheme.bodyText1.override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue4 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue4 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 15,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 8, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.location_on,
+                                          color: Color(0xFFF6EFDE),
+                                          size: 15,
+                                        ),
+                                        Text(
+                                          'Loney Wala',
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFFF6EFDE),
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 150,
+                            height: 180,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 2, 2, 5),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0),
+                                      child: Image.network(
+                                        'https://picsum.photos/seed/506/600',
+                                        width: 150,
+                                        height: 108,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 0, 0, 0),
+                                    child: Text(
+                                      'Shop Name',
+                                      style:
+                                          FlutterFlowTheme.bodyText1.override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue5 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue5 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 15,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 8, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.location_on,
+                                          color: Color(0xFFF6EFDE),
+                                          size: 15,
+                                        ),
+                                        Text(
+                                          'Loney Wala',
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFFF6EFDE),
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                },
-                child: Text(
-                  'Register?',
-                  style: FlutterFlowTheme.title2.override(
-                    fontFamily: 'Poppins',
-                    fontSize: 14,
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-              child: Container(
-                width: 50,
-                height: 100,
-                constraints: BoxConstraints(
-                  maxHeight: 2,
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xFF282828),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Sign In with Google',
-                icon: FaIcon(
-                  FontAwesomeIcons.google,
-                  size: 20,
-                ),
-                options: FFButtonOptions(
-                  width: 275,
-                  height: 45,
-                  color: Color(0xFFF6EFDE),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF282828),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-0.85, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                            child: AutoSizeText(
+                              'Service Providers',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0, -0.1),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                            child: AutoSizeText(
+                              'See all',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF4F4F4F),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  borderSide: BorderSide(
-                    color: Color(0xFF282828),
-                    width: 1.5,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 120,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 10, 5, 0),
+                                    child: Container(
+                                      width: 80,
+                                      height: 80,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        'https://i.pravatar.cc/150?img=51',
+                                      ),
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Person Name',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Contractor',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue6 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue6 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 10,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 120,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 10, 5, 0),
+                                    child: Container(
+                                      width: 80,
+                                      height: 80,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        'https://i.pravatar.cc/150?img=40',
+                                      ),
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Person Name',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Contractor',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue7 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue7 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 10,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 120,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 10, 5, 0),
+                                    child: Container(
+                                      width: 80,
+                                      height: 80,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        'https://i.pravatar.cc/150?img=69',
+                                      ),
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Person Name',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Contractor',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue8 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue8 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 10,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+                          child: Container(
+                            width: 120,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF282828),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 10, 5, 0),
+                                    child: Container(
+                                      width: 80,
+                                      height: 80,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        'https://i.pravatar.cc/150?img=51',
+                                      ),
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Person Name',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  AutoSizeText(
+                                    'Contractor',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 2, 0, 0),
+                                    child: RatingBar.builder(
+                                      onRatingUpdate: (newValue) => setState(
+                                          () => ratingBarValue9 = newValue),
+                                      itemBuilder: (context, index) => Icon(
+                                        Icons.star_rounded,
+                                        color: Color(0xFFFFB700),
+                                      ),
+                                      direction: Axis.horizontal,
+                                      initialRating: ratingBarValue9 ??= 4,
+                                      unratedColor: Color(0xFF9E9E9E),
+                                      itemCount: 5,
+                                      itemSize: 10,
+                                      glowColor: Color(0xFFFFB700),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  borderRadius: 0,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 19, 0, 0),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Sign In with Facebook',
-                icon: FaIcon(
-                  FontAwesomeIcons.facebookSquare,
-                  size: 25,
-                ),
-                options: FFButtonOptions(
-                  width: 275,
-                  height: 45,
-                  color: Color(0xFFF6EFDE),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF282828),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-0.85, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                            child: AutoSizeText(
+                              'Recent Chat',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0, -0.1),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                            child: AutoSizeText(
+                              'See all',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF4F4F4F),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  borderSide: BorderSide(
-                    color: Color(0xFF282828),
-                    width: 1.5,
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 2, 10, 3),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MarketPlaceWidget(),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                              8, 8, 8, 8),
+                                          child: Container(
+                                            width: 60,
+                                            height: 60,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              'https://picsum.photos/seed/878/600',
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Name Here',
+                                              style: FlutterFlowTheme.title3
+                                                  .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF282828),
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsetsDirectional.fromSTEB(
+                                                      0, 0, 10, 0),
+                                              child: AutoSizeText(
+                                                'Lorem Ipsum is simply dummy',
+                                                textAlign: TextAlign.start,
+                                                style: FlutterFlowTheme.bodyText1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 2, 10, 3),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 8, 8, 8),
+                                        child: Container(
+                                          width: 60,
+                                          height: 60,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.network(
+                                            'https://picsum.photos/seed/878/600',
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Name Here',
+                                            style: FlutterFlowTheme.title3
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFF282828),
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 10, 0),
+                                            child: AutoSizeText(
+                                              'Lorem Ipsum is simply dummy',
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.bodyText1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 2, 10, 3),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 8, 8, 8),
+                                        child: Container(
+                                          width: 60,
+                                          height: 60,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.network(
+                                            'https://picsum.photos/seed/878/600',
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Name Here',
+                                            style: FlutterFlowTheme.title3
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFF282828),
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 10, 0),
+                                            child: AutoSizeText(
+                                              'Lorem Ipsum is simply dummy',
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.bodyText1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 2, 10, 3),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 8, 8, 8),
+                                        child: Container(
+                                          width: 60,
+                                          height: 60,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.network(
+                                            'https://picsum.photos/seed/878/600',
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Name Here',
+                                            style: FlutterFlowTheme.title3
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFF282828),
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 10, 0),
+                                            child: AutoSizeText(
+                                              'Lorem Ipsum is simply dummy',
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.bodyText1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  borderRadius: 0,
-                ),
+                ],
               ),
             ),
           ],
         ),
       ),
-
     );
   }
 }
