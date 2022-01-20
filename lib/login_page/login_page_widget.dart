@@ -1,4 +1,5 @@
 import 'package:build_i_t/home_page/home_page_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -9,6 +10,7 @@ import '../registration_page_copy/registration_page_copy_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({Key key}) : super(key: key);
@@ -23,7 +25,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   TextEditingController textController2;
   bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   void initState() {
     super.initState();
@@ -31,7 +33,37 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     textController2 = TextEditingController();
     passwordVisibility = false;
   }
+  Future<void> Login()
+  async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: "barry.allen@example.com",
+          password: "SuperSecretPassword!"
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+    User user=FirebaseAuth.instance.currentUser;
+    if(user!=null && !user.emailVerified)
+    {
+        Fluttertoast.showToast(
+            msg: "Email not Verified");
+        Fluttertoast.showToast(
+            msg: "Verification Email Sent");
+        await user.sendEmailVerification();
+        HomePageWidget();
+    }
+    else if(user.emailVerified)
+      {
+        HomePageWidget();
+      }
 
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,12 +219,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePageWidget(),
-                    ),
-                  );
+                  await Login();
                 },
                 text: 'Sign In',
                 options: FFButtonOptions(
