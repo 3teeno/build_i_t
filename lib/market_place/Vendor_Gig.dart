@@ -195,31 +195,31 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Edit Profile',
-                                  icon: Icon(
-                                    Icons.edit_outlined,
-                                    size: 18,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 150,
-                                    height: 40,
-                                    color: Color(0xFF212121),
-                                    textStyle:
-                                        FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFFF4BB03),
-                                    ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: 12,
-                                  ),
-                                ),
+                                // child: FFButtonWidget(
+                                //   onPressed: () {
+                                //     print('Button pressed ...');
+                                //   },
+                                //   text: 'Edit Profile',
+                                //   icon: Icon(
+                                //     Icons.edit_outlined,
+                                //     size: 18,
+                                //   ),
+                                //   options: FFButtonOptions(
+                                //     width: 150,
+                                //     height: 40,
+                                //     color: Color(0xFF212121),
+                                //     textStyle:
+                                //         FlutterFlowTheme.subtitle2.override(
+                                //       fontFamily: 'Poppins',
+                                //       color: Color(0xFFF4BB03),
+                                //     ),
+                                //     borderSide: BorderSide(
+                                //       color: Colors.transparent,
+                                //       width: 1,
+                                //     ),
+                                //     borderRadius: 12,
+                                //   ),
+                                // ),
                               ),
                             ],
                           ),
