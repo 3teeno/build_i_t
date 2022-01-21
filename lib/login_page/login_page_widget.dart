@@ -60,8 +60,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
             FlutterFlowDropDown(
               options: ['Customer', 'Vendor', 'Service Provider'].toList(),
               onChanged: (val) => setState(() => dropDownValue = val),
-              width: 275,
-              height: 50,
+              width: 290,
+              height: 60,
               textStyle: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -260,7 +260,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
               child: Container(
                 width: 50,
                 height: 100,
@@ -274,7 +274,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
               child: FFButtonWidget(
                 onPressed: () {
                   print('Button pressed ...');
@@ -301,7 +301,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 19, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
               child: FFButtonWidget(
                 onPressed: () {
                   print('Button pressed ...');
