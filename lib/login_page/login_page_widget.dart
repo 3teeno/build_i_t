@@ -189,8 +189,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               child: FFButtonWidget(
                 onPressed: () {
                   context.read<AuthenticationService>().SignIn(
-                      email:emailController.toString(),
-                      Password: passwordController.toString()
+                      email:emailController.text.trim(),
+                      Password: passwordController.text.trim()
                   );
                   // MaterialPageRoute(
                   //   builder: (context) =>HomePageWidget(),

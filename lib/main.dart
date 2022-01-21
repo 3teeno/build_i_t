@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:build_i_t/home_page/home_page_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -55,11 +56,12 @@ class AuthenticationWraper extends StatelessWidget
     final firebaseUser = context.watch<User>();
     if(firebaseUser!=null)
       {
-        return Text("Signed In");
+        return HomePageWidget();
       }
     else
       {
-        return Text("Not signed in");
+        Fluttertoast.showToast(msg: "Invalid Username or Password");
+        return LoginPageWidget();
       }
 
   }
