@@ -1,5 +1,7 @@
 import 'package:build_i_t/MenuBar/menubar_top.dart';
 import 'package:build_i_t/all_market_places/all_market_places_widget.dart';
+import 'package:build_i_t/chat_inbox/chat_inbox_widget.dart';
+import 'package:build_i_t/login_page/login_page_widget.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -177,7 +179,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SearchPageWidget(),
+                                  builder: (context) => ChatInboxWidget(),
                                 ),
                               );
                               },
