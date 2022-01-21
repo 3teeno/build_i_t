@@ -1,8 +1,11 @@
+import 'package:build_i_t/authentication_service.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:build_i_t/home_page/home_page_widget.dart';
+import 'package:provider/provider.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +27,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(providers: [
+      Provider<AuthenticationService>(
+        create: (_) => AuthenticationService(FirebaseAuth.instance)
+    ),
+    StreamProvider(
+      create: (context) => context.read<AuthenticationService >().authStateChanges,
+    ),
+    ],
+    child: MaterialApp(
       title: 'BuildIT',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -33,15 +44,24 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: AuthenticationWraper(),
-    );
+      home: LoginPageWidget(),
+    ));
   }
 }
 class AuthenticationWraper extends StatelessWidget
 {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final firebaseUser = context.watch<User>();
+    if(firebaseUser!=null)
+      {
+        return Text("Signed In");
+      }
+    else
+      {
+        return Text("Not signed in");
+      }
+
   }
   
 }
