@@ -57,7 +57,8 @@ class AuthenticationWraper extends StatelessWidget
     final firebaseUser = context.watch<User>();
     if(firebaseUser!=null)
       {
-        return HomePageWidget();
+        Fluttertoast.showToast(msg: "Success");
+        MaterialPageRoute(builder: (context) =>HomePageWidget());
       }
     else
       {
