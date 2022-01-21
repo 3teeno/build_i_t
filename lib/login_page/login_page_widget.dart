@@ -1,4 +1,5 @@
 import 'package:build_i_t/home_page/home_page_widget.dart';
+import 'package:build_i_t/main.dart';
 import 'package:provider/provider.dart';
 import '../authentication_service.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
@@ -192,6 +193,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       email:emailController.text.trim(),
                       Password: passwordController.text.trim()
                   );
+                  AuthenticationWraper();
                   // MaterialPageRoute(
                   //   builder: (context) =>HomePageWidget(),
                   // );
