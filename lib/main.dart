@@ -1,4 +1,5 @@
 import 'package:build_i_t/authentication_service.dart';
+import 'package:build_i_t/login_page/Google_signIn.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -27,16 +28,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-      Provider<AuthenticationService>(
-        create: (_) => AuthenticationService(FirebaseAuth.instance)
-    ),
-    StreamProvider(
-      create: (context) => context.read<AuthenticationService >().authStateChanges,
-    ),
-    ],
-    child: MaterialApp(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+      child: MaterialApp(
       title: 'BuildIT',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -48,24 +42,3 @@ class _MyAppState extends State<MyApp> {
       home: LoginPageWidget(),
     ));
   }
-}
-class AuthenticationWraper extends StatelessWidget
-{
-  AuthenticationWraper({Key key,}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-    if(firebaseUser!=null)
-      {
-        Fluttertoast.showToast(msg: "Success");
-        MaterialPageRoute(builder: (context) =>HomePageWidget());
-      }
-    else
-      {
-        Fluttertoast.showToast(msg: "Invalid Username or Password");
-        return LoginPageWidget();
-      }
-
-  }
-  
-}
