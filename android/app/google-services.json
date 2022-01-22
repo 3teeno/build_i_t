@@ -30,6 +30,13 @@
             {
               "client_id": "637101543789-9npc155c0t5nsgclacmik9go1bddk557.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "637101543789-jnlfrj1rkugej937kt57sgr6dlo1pf4j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.buildit"
+              }
             }
           ]
         }
