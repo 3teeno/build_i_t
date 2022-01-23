@@ -1,5 +1,6 @@
 import 'package:build_i_t/MenuBar/menubar_top.dart';
-import 'package:build_i_t/all_market_places/all_market_places_widget.dart';
+import 'package:build_i_t/all_market_places/Search_Material.dart';
+import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
@@ -112,13 +113,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         InkWell(
-                          onTap:  () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AllMarketPlacesWidget(),
-                              ),
-                            );
+                          onTap:  ()  {
+                            showSearch(context: context, delegate: DataSearch(ratingBarValue1));
                           },
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
@@ -184,13 +180,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: AutoSizeText(
-                            'See all',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.title3.override(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF4F4F4F),
-                              fontSize: 14,
+                          child: InkWell(
+                            onTap: (){
+                              showSearch(context: context, delegate: search_serviceProviders(ratingBarValue1));
+                            },
+                            child: AutoSizeText(
+                              'See all',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF4F4F4F),
+                                fontSize: 14,
+                              ),
                             ),
                           ),
                         ),
@@ -236,13 +237,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: AutoSizeText(
-                            'See all',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.title3.override(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF4F4F4F),
-                              fontSize: 14,
+                          child: InkWell(
+                            onTap: (){
+                              showSearch(context: context, delegate: search_serviceProviders(ratingBarValue1));
+                            },
+                            child: AutoSizeText(
+                              'See all',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF4F4F4F),
+                                fontSize: 14,
+                              ),
                             ),
                           ),
                         ),

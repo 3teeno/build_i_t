@@ -1,12 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 //Service Provider
-Widget serviceProvidersCard({double ratingBarValue,double ratingNo,String serviceProviderName,String serviceProviderCatagory,String imageURL}){
+Widget serviceProvidersCard(
+    {double ratingBarValue,
+    double ratingNo,
+    String serviceProviderName,
+    String serviceProviderCatagory,
+    String imageURL}) {
   return Padding(
-    padding:
-    EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
+    padding: EdgeInsetsDirectional.fromSTEB(10, 10, 2, 10),
     child: Container(
       width: 120,
       height: 150,
@@ -15,16 +21,14 @@ Widget serviceProvidersCard({double ratingBarValue,double ratingNo,String servic
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding:
-        EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(
-                  5, 10, 5, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(5, 10, 5, 5),
               child: Container(
                 width: 80,
                 height: 80,
@@ -34,6 +38,7 @@ Widget serviceProvidersCard({double ratingBarValue,double ratingNo,String servic
                 ),
                 child: Image.network(
                   imageURL,
+                  fit: BoxFit.cover,
 //                  'https://i.pravatar.cc/150?img=51',
                 ),
               ),
@@ -60,8 +65,7 @@ Widget serviceProvidersCard({double ratingBarValue,double ratingNo,String servic
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(
-                  8, 2, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(8, 2, 0, 0),
               child: RatingBar.builder(
                 // onRatingUpdate: (newValue) => setState(
                 //         () => ratingBarValue6 = newValue),

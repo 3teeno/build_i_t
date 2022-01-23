@@ -28,25 +28,25 @@ class _menuBarState extends State<menuBar> {
     return Drawer(
       elevation: 16,
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 45, 0, 0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Align(
-              alignment: AlignmentDirectional(0.55, 0),
+              alignment: AlignmentDirectional(0.5, 2),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                 child: Lottie.network(
                   'https://assets3.lottiefiles.com/packages/lf20_byuzwmds.json',
                   width: 250,
-                  height: 180,
+                  height: 220,
                   fit: BoxFit.cover,
                   animate: true,
                 ),
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: AlignmentDirectional(0, 0.5),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: Image.asset(

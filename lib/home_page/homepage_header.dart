@@ -1,6 +1,6 @@
+import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_widgets.dart';
-import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -13,6 +13,7 @@ class homePageHeader extends StatefulWidget {
 
 class _homePageHeaderState extends State<homePageHeader> {
   TextEditingController textController;
+  double ratingBarValue1;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -83,91 +84,40 @@ class _homePageHeaderState extends State<homePageHeader> {
             animate: true,
           ),
         ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              child: Align(
-                alignment: AlignmentDirectional(0, 0.95),
-                child: Padding(
-                  padding:
-                  EdgeInsetsDirectional.fromSTEB(20, 0, 5, 0),
-                  child: TextFormField(
-                    controller: textController,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      isDense: true,
-                      hintText: 'Search',
-                      hintStyle: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFC4C4C4),
-                        fontStyle: FontStyle.italic,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFF282828),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFF282828),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
-                          20, 30, 0, 0),
-                    ),
-                    style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFFC4C4C4),
-                      fontStyle: FontStyle.italic,
-                    ),
-                    textAlign: TextAlign.start,
-                  ),
+        Align(
+          alignment: AlignmentDirectional(-0.85, 0.8),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+            child: FFButtonWidget(
+              onPressed: () {
+                // MaterialPageRoute(
+                //   builder: (context) =>sh(),
+                // );
+                showSearch(context: context, delegate: DataSearch(ratingBarValue1));
+              },
+              text: 'Search',
+              icon: Icon(
+                Icons.search,
+                color: Color(0xFF212121),
+                size: 20,
+              ),
+              options: FFButtonOptions(
+                width: MediaQuery.of(context).size.width*0.3,
+                // padding: EdgeInsetsDirectional.fromSTEB(20, 0, 5, 0),
+                height: 50,
+                color: Color(0xFFF4BB03),
+                textStyle: FlutterFlowTheme.subtitle2.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
                 ),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 1,
+                ),
+                borderRadius: 12,
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(0.15, 0.9),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
-                child: FFButtonWidget(
-                  onPressed: () {
-                    MaterialPageRoute(
-                      builder: (context) =>SearchPageWidget(),
-                    );
-                  },
-
-                  text: '',
-                  icon: Icon(
-                    Icons.search,
-                    color: Color(0xFF212121),
-                    size: 20,
-                  ),
-                  options: FFButtonOptions(
-                    width: 55,
-                    // padding: EdgeInsetsDirectional.fromSTEB(20, 0, 5, 0),
-                    height: 50,
-                    color: Color(0xFFF4BB03),
-                    textStyle: FlutterFlowTheme.subtitle2.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                    ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ],
     );
