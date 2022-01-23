@@ -1,4 +1,5 @@
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
+import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
 import 'package:flutter/material.dart';
 import 'package:build_i_t/authentication_service.dart';
@@ -279,9 +280,21 @@ class _menuBarState extends State<menuBar> {
                               EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: InkWell(
                                 onTap: ()
-                                {
+                                async {
                                   final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
-                                  provider.logout();
+                                  await provider.logout();
+                                  if(FirebaseAuth.instance.currentUser==null)
+                                  {
+                                    await Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        duration: Duration(milliseconds: 300),
+                                        reverseDuration: Duration(milliseconds: 300),
+                                        child: LoginPageWidget(),
+                                      ),
+                                    );
+                                  }
                                 },
                                 child: Text(
                                   'Logout',

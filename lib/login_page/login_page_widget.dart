@@ -38,7 +38,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   }
   @override
   Widget build(BuildContext context) {
-    stateLogin();
+    //stateLogin();
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
