@@ -1,6 +1,9 @@
+import 'package:build_i_t/MenuBar/menubar_top.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
+import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_widgets.dart';
+import 'package:build_i_t/market_place/Vendor_Gig.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -59,7 +62,10 @@ class _homePageHeaderState extends State<homePageHeader> {
                     alignment: AlignmentDirectional(-0.9, -0.6),
                     child: InkWell(
                       onTap: () async {
-                        scaffoldKey.currentState.openDrawer();
+                        // await Navigator.push(context, PageTransition(child: menuBar(), type: PageTransitionType.scale,
+                        //     alignment: Alignment.centerLeft,duration: Duration(milliseconds: 300),reverseDuration: Duration(milliseconds: 300)));
+                        Scaffold.of(context).openDrawer();
+                        //scaffoldKey.currentState.openDrawer();
                       },
                       child: Icon(
                         Icons.menu_sharp,
