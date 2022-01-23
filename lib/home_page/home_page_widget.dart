@@ -4,7 +4,6 @@ import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
-import 'package:provider/provider.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -13,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+
 import 'homepage_header.dart';
 import 'marketPlaceCard.dart';
 
@@ -20,6 +20,7 @@ import 'marketPlaceCard.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key key}) : super(key: key);
+
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
@@ -43,6 +44,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     super.initState();
     textController = TextEditingController();
   }
+
   @override
   Widget build(BuildContext context) {
     size=MediaQuery.of(context);
@@ -254,6 +256,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     children: [
                       chatCard(context,name: "Umer Hayat",text: "Hello how are you?",imageURL: 'https://picsum.photos/seed/878/600'),
                       chatCard(context,name: "Kamran",text: "Hollaa",imageURL: 'https://picsum.photos/seed/878/600'),
+
+
                     ],
                   ),
                 ],
