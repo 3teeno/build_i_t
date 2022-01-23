@@ -33,7 +33,6 @@ catch(e){
 
   }
   Future logout() async {
-    await googleSignin.disconnect();
-    FirebaseAuth.instance.signOut();
+    await googleSignin.signOut();
   }
 }
