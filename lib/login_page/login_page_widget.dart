@@ -285,10 +285,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                   child: FFButtonWidget(
-                    onPressed: () {
+                    onPressed: () async {
                       print('Google Signin Button pressed ...');
                       final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
-                      provider.googleLogin();
+                      await provider.googleLogin();
+                      if(FirebaseAuth.instance.currentUser!=null)
+                        {
+                          await Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              duration: Duration(milliseconds: 300),
+                              reverseDuration: Duration(milliseconds: 300),
+                              child: HomePageWidget(),
+                            ),
+                          );
+                        }
                     },
                     text: 'Sign In with Google',
                     icon: FaIcon(
