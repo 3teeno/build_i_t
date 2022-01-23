@@ -6,9 +6,12 @@ Future<void> addUserData(String Type,String FullName,String Phone)
 {
   Fluttertoast.showToast(msg: "Adding user to "+Type);
   CollectionReference users=FirebaseFirestore.instance.collection(Type);
+
+
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid=auth.currentUser.uid.toString();
-  users.add({"FullName":FullName,"PhoneNo":Phone,"uid":uid})
+  DocumentReference documentReferencer = users.doc(uid);
+  documentReferencer.set({"FullName":FullName,"PhoneNo":Phone,"uid":uid})
       .then((value) => print("User Added"))
       .catchError((error) => print("Failed to add user: $error"));;
   return null;

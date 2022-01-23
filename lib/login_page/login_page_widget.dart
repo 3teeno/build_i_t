@@ -203,7 +203,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           FirebaseAuth.instance.currentUser
                               .sendEmailVerification();
                         }
-                      if(FirebaseAuth.instance.currentUser!=null) {
+                      else if(FirebaseAuth.instance.currentUser!=null) {
                         //final createUserRecord = createUsersRecordData();
                           await Navigator.push(
                             context,
