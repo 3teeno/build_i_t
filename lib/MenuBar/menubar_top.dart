@@ -1,3 +1,4 @@
+import 'package:build_i_t/chat_inbox/chat_inbox_widget.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
@@ -108,14 +109,6 @@ class _menuBarState extends State<menuBar> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: InkWell(
@@ -123,7 +116,7 @@ class _menuBarState extends State<menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageWidget(),
+                            builder: (context) => ChatInboxWidget(),
                           ),
                         );
                       },
@@ -162,14 +155,6 @@ class _menuBarState extends State<menuBar> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: Container(
@@ -205,14 +190,6 @@ class _menuBarState extends State<menuBar> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: Container(
@@ -248,14 +225,6 @@ class _menuBarState extends State<menuBar> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: Container(
@@ -283,15 +252,15 @@ class _menuBarState extends State<menuBar> {
                                 async {
                                   final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
                                   await provider.logout();
-                                    await Navigator.push(
-                                      context,
-                                      PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        duration: Duration(milliseconds: 300),
-                                        reverseDuration: Duration(milliseconds: 300),
-                                        child: LoginPageWidget(),
-                                      ),
-                                    );
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 300),
+                                      reverseDuration: Duration(milliseconds: 300),
+                                      child: LoginPageWidget(),
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   'Logout',
