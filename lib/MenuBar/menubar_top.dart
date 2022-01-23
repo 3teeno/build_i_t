@@ -283,8 +283,7 @@ class _menuBarState extends State<menuBar> {
                                 async {
                                   final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
                                   await provider.logout();
-                                  if(FirebaseAuth.instance.currentUser==null)
-                                  {
+
                                     await Navigator.push(
                                       context,
                                       PageTransition(
@@ -294,7 +293,6 @@ class _menuBarState extends State<menuBar> {
                                         child: LoginPageWidget(),
                                       ),
                                     );
-                                  }
                                 },
                                 child: Text(
                                   'Logout',
