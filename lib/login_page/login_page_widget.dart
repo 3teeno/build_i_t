@@ -50,38 +50,35 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
-                      child: Image.asset(
-                        'assets/images/welcome.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
-                ),
-                FlutterFlowDropDown(
-                  options: ['Customer', 'Vendor', 'Service Provider'].toList(),
-                  onChanged: (val) => setState(() => dropDownValue = val),
-                  width: 290,
-                  height: 60,
-                  textStyle: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 20),
+                  child: Image.asset(
+                    'assets/images/welcome.png',
+                    fit: BoxFit.cover,
                   ),
-                  fillColor: Color(0xFF282828),
-                  elevation: 2,
-                  borderColor: Colors.transparent,
-                  borderWidth: 1.5,
-                  borderRadius: 0,
-                  margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-                  hidesUnderline: true,
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(50, 12, 50, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                  child: FlutterFlowDropDown(
+                    options: ['Customer', 'Vendor', 'Service Provider'].toList(),
+                    onChanged: (val) => setState(() => dropDownValue = val),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    textStyle: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
+                    fillColor: Color(0xFF282828),
+                    elevation: 2,
+                    borderColor: Colors.transparent,
+                    borderWidth: 1.5,
+                    borderRadius: 0,
+                    margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                    hidesUnderline: true,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
                   child: TextFormField(
                     controller: emailController,
                     obscureText: false,
@@ -130,7 +127,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(50, 12, 50, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
                   child: TextFormField(
                     controller: passwordController,
                     obscureText: !passwordVisibility,
@@ -191,7 +188,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(),password: passwordController.text.trim().toString());
@@ -218,8 +215,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       },
                     text: 'Sign In',
                     options: FFButtonOptions(
-                      width: 275,
-                      height: 45,
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
                       color: Color(0xFF282828),
                       textStyle: FlutterFlowTheme.subtitle2.override(
                         fontFamily: 'Poppins',
@@ -251,7 +248,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       'Forgot Password?',
                       style: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        fontSize: 12,
+                        fontSize: 16,
                       ),
                     ),
                   ),
@@ -274,7 +271,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       'Register?',
                       style: FlutterFlowTheme.title2.override(
                         fontFamily: 'Poppins',
-                        fontSize: 14,
+                        fontSize: 18,
                       ),
                     ),
                   ),
@@ -294,7 +291,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       print('Google Signin Button pressed ...');
@@ -318,8 +315,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       size: 20,
                     ),
                     options: FFButtonOptions(
-                      width: 275,
-                      height: 45,
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
                       color: Color(0xFFF6EFDE),
                       textStyle: FlutterFlowTheme.subtitle2.override(
                         fontFamily: 'Poppins',
@@ -333,33 +330,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Sign In with Facebook',
-                    icon: FaIcon(
-                      FontAwesomeIcons.facebookSquare,
-                      size: 25,
-                    ),
-                    options: FFButtonOptions(
-                      width: 275,
-                      height: 45,
-                      color: Color(0xFFF6EFDE),
-                      textStyle: FlutterFlowTheme.subtitle2.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
-                      ),
-                      borderSide: BorderSide(
-                        color: Color(0xFF282828),
-                        width: 1.5,
-                      ),
-                      borderRadius: 0,
-                    ),
-                  ),
-                ),
+
               ],
             ),
           ],
