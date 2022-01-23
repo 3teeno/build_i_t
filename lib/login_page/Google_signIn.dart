@@ -12,18 +12,28 @@ class GoogleSignInProvider extends ChangeNotifier{
   GoogleSignInAccount get user => _user;
 
   Future googleLogin() async {
-    final googleUser = await googleSignin.signIn();
-    if(googleUser== null)
-      {
-        Fluttertoast.showToast(msg: "Kindly Login To Continue");
-      }
-    _user = googleUser;
-    final googleAuth = await googleUser.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    await FirebaseAuth.instance.signInWithCredential(credential);
+try {
+  final googleUser = await googleSignin.signIn();
+  if (googleUser == null) {
+    Fluttertoast.showToast(msg: "Kindly Login To Continue");
+  }
+  _user = googleUser;
+  final googleAuth = await googleUser.authentication;
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
+  await FirebaseAuth.instance.signInWithCredential(credential);
+}
+catch(e){
+  print("Firebase Google Error :"+ e.toString());
+}
+
     notifyListeners();
+
+  }
+  Future logout() async {
+    await googleSignin.disconnect();
+    FirebaseAuth.instance.signOut();
   }
 }

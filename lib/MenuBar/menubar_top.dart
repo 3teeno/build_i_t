@@ -1,4 +1,5 @@
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
+import 'package:build_i_t/login_page/Google_signIn.dart';
 import 'package:flutter/material.dart';
 import 'package:build_i_t/authentication_service.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
@@ -276,11 +277,18 @@ class _menuBarState extends State<menuBar> {
                             Padding(
                               padding:
                               EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Logout',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
+                              child: InkWell(
+                                onTap: ()
+                                {
+                                  final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
+                                  provider.logout();
+                                },
+                                child: Text(
+                                  'Logout',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),

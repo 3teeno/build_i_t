@@ -4,18 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'home_page_widget.dart';
 
-
-class stateLogin extends StatefulWidget {
+class stateLogin extends StatelessWidget {
   const stateLogin({Key key}) : super(key: key);
 
   @override
-  _stateLoginState createState() => _stateLoginState();
-}
-
-class _stateLoginState extends State<stateLogin> {
-  @override
   Widget build(BuildContext context) {
-    return    StreamBuilder(
+    return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context,snapshot) {
           if(snapshot.connectionState==ConnectionState.waiting)
@@ -24,9 +18,10 @@ class _stateLoginState extends State<stateLogin> {
           } else if(snapshot.hasError) {
             return Center(child:Text("Failed To Authenticate"));
           } else if(snapshot.hasData) {
-            //Already Logged in Stated
+            //Already Logged in State
             return HomePageWidget();
           } else return Center(child:Text("Login To Contiune"));}
     );
   }
 }
+
