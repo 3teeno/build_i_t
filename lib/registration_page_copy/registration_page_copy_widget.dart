@@ -1,5 +1,9 @@
 import 'package:build_i_t/login_page/login_page_widget.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+import '../FirebaseUser.dart';
+import '../authentication_service.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -19,29 +23,32 @@ class RegistrationPageCopyWidget extends StatefulWidget {
 class _RegistrationPageCopyWidgetState
     extends State<RegistrationPageCopyWidget> {
   String dropDownValue;
-  TextEditingController textController1;
-  TextEditingController textController2;
-  TextEditingController textController3;
-  TextEditingController textController4;
+  TextEditingController FullNameController;
+  TextEditingController EmailController;
+  TextEditingController PhoneController;
+  TextEditingController PasswordController;
   bool passwordVisibility1;
-  TextEditingController textController5;
+  TextEditingController ConfirmPasswordController;
+  String Type="Customer";
   bool passwordVisibility2;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
+    FullNameController = TextEditingController();
+    EmailController = TextEditingController();
+    PhoneController = TextEditingController();
+    PasswordController = TextEditingController();
     passwordVisibility1 = false;
-    textController5 = TextEditingController();
+    ConfirmPasswordController = TextEditingController();
     passwordVisibility2 = false;
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
@@ -111,7 +118,10 @@ class _RegistrationPageCopyWidgetState
                   FlutterFlowDropDown(
                     options:
                         ['Customer', 'Vendor', 'Service Provider'].toList(),
-                    onChanged: (val) => setState(() => dropDownValue = val),
+                    onChanged: (val) => (setState(() {
+                      dropDownValue = val;
+                      Type=val;
+                    })),
                     width: 275,
                     height: 50,
                     textStyle: FlutterFlowTheme.bodyText1.override(
@@ -125,11 +135,11 @@ class _RegistrationPageCopyWidgetState
                     borderRadius: 0,
                     margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
                     hidesUnderline: true,
-                  ),
+                  ),//user type
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 0),
                     child: TextFormField(
-                      controller: textController1,
+                      controller: FullNameController,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Full Name',
@@ -165,11 +175,11 @@ class _RegistrationPageCopyWidgetState
                       ),
                       textAlign: TextAlign.start,
                     ),
-                  ),
+                  ),//Full name
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 0),
                     child: TextFormField(
-                      controller: textController2,
+                      controller: EmailController,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Email',
@@ -206,11 +216,11 @@ class _RegistrationPageCopyWidgetState
                       textAlign: TextAlign.start,
                       keyboardType: TextInputType.emailAddress,
                     ),
-                  ),
+                  ),//Email
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 0),
                     child: TextFormField(
-                      controller: textController3,
+                      controller: PhoneController,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Phone',
@@ -247,11 +257,11 @@ class _RegistrationPageCopyWidgetState
                       textAlign: TextAlign.start,
                       keyboardType: TextInputType.phone,
                     ),
-                  ),
+                  ),//Phone
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 0),
                     child: TextFormField(
-                      controller: textController4,
+                      controller: PasswordController,
                       obscureText: !passwordVisibility1,
                       decoration: InputDecoration(
                         labelText: 'Password',
@@ -300,11 +310,11 @@ class _RegistrationPageCopyWidgetState
                       textAlign: TextAlign.start,
                       keyboardType: TextInputType.visiblePassword,
                     ),
-                  ),
+                  ),//Password
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(50, 15, 50, 0),
                     child: TextFormField(
-                      controller: textController5,
+                      controller: ConfirmPasswordController,
                       obscureText: !passwordVisibility2,
                       decoration: InputDecoration(
                         labelText: 'Confirm Password',
@@ -353,14 +363,35 @@ class _RegistrationPageCopyWidgetState
                       textAlign: TextAlign.start,
                       keyboardType: TextInputType.visiblePassword,
                     ),
-                  ),
+                  ),//Confirm Password
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        MaterialPageRoute(
-                          builder: (context) => HomePageWidget(),
-                        );
+                      onPressed: () async {
+                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                            email: EmailController.text.trim(),
+                            password: PasswordController.text.trim());
+                        FirebaseAuth.instance.signInWithEmailAndPassword(email: EmailController.text.trim(),
+                            password: PasswordController.text.trim());
+                        if(FirebaseAuth.instance.currentUser!=null) {
+                          if (!FirebaseAuth.instance.currentUser
+                              .emailVerified) {
+                            Fluttertoast.showToast(msg: "Verification Email Sent!");
+                            FirebaseAuth.instance.currentUser
+                                .sendEmailVerification();
+                            print(Type);
+                            addUserData(Type.toString(),FullNameController.text.toString(),PhoneController.text.toString());
+
+                          }
+                          if (FirebaseAuth.instance.currentUser.emailVerified) {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginPageWidget(),
+                              ),
+                            );
+                          }
+                        }
                       },
                       text: 'Sign Up',
                       options: FFButtonOptions(
