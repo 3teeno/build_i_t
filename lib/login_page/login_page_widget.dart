@@ -289,16 +289,17 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       print('Google Signin Button pressed ...');
                       final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
                       await provider.googleLogin();
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.rightToLeft,
-                          duration: Duration(milliseconds: 300),
-                          reverseDuration: Duration(milliseconds: 300),
-                          child: HomePageWidget(),
-                        ),
-                      );
-
+                      if(FirebaseAuth.instance.currentUser!=null) {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: HomePageWidget(),
+                          ),
+                        );
+                      }
                     },
                     text: 'Sign In with Google',
                     icon: FaIcon(
