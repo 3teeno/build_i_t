@@ -47,6 +47,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
   TextEditingController Service_Description;
   TextEditingController Service_HourlyRate;
   TextEditingController Service_Category;
+  String task;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -55,6 +56,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
     Service_Description=new TextEditingController();
     Service_HourlyRate=new TextEditingController();
     Service_Category=new TextEditingController();
+    task='New Service';
     super.initState();
   }
   @override
@@ -130,7 +132,10 @@ class _Services_CRUDState extends State<Services_CRUD> {
                   FlutterFlowDropDown(
                     options:
                     ['New Service', 'Update Service', 'Delete Service'].toList(),
-                    onChanged: (val) => setState(() => dropDownValue = val),
+                    onChanged: (val) => setState(() {
+                      dropDownValue = val;
+                      task=val;
+                    }),
                     width: 275,
                     height: 50,
                     textStyle: FlutterFlowTheme.bodyText1.override(
@@ -311,9 +316,25 @@ class _Services_CRUDState extends State<Services_CRUD> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () {
-                        MaterialPageRoute(
-                          builder: (context) => HomePageWidget(),
-                        );
+                        if(task == "New Service")
+                        {
+                          Database.addItem(
+                              Service_Name: Service_Name.text.toString(),
+                              Service_Description: Service_Description.text.toString(),
+                              Service_HourlyRate: Service_HourlyRate.text.toString(),
+                              Service_Category: Service_Category.text.toString());
+                        }
+                        else if (task =="Update Service")
+                        {
+                          Database.updateItem(
+                              Service_Name: Service_Name.text.toString(),
+                              Service_Description: Service_Description.text.toString(),
+                              Service_HourlyRate: Service_HourlyRate.text.toString(),
+                              Service_Category: Service_Category.text.toString());
+                        }
+                        else {
+                          Database.deleteItem(docId : auth.currentUser.uid);
+                        }
                       },
                       text: 'Submit',
                       options: FFButtonOptions(
@@ -335,11 +356,9 @@ class _Services_CRUDState extends State<Services_CRUD> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                     child: InkWell(
-                      onTap: () {print("Data To Be Submitted "+Service_Name.text.toString());Database.addItem(
-                          Service_Name: Service_Name.text.toString(),
-                          Service_Description: Service_Description.text.toString(),
-                          Service_HourlyRate: Service_HourlyRate.text.toString(),
-                          Service_Category: Service_Category.text.toString());},
+                      onTap: () {
+
+                        },
                       child: Text(
                         'back',
                         style: FlutterFlowTheme.bodyText1,

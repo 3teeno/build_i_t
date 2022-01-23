@@ -30,4 +30,36 @@ class Database {
         .whenComplete(() => print("Notes item added to the database"))
         .catchError((e) => print(e));
   }
+
+  static Future<void> updateItem({
+    String Service_Name,
+    String Service_Description,
+    String Service_HourlyRate,
+    String Service_Category,
+  }) async {
+    DocumentReference documentReferencer = _mainCollection.doc(user.uid);
+
+    Map<String, dynamic> data = <String, dynamic>{
+      "S_Name": Service_Name,
+      "S_Description": Service_Description,
+      "S_HourlyRate": Service_HourlyRate,
+      "S_Category": Service_Category,
+    };
+    await documentReferencer
+        .update(data)
+        .whenComplete(() => print("Notes updated to the database"))
+        .catchError((e) => print(e));
+  }
+
+  static Future<void> deleteItem({
+    String docId,
+  }) async {
+
+    DocumentReference documentReferencer = _mainCollection.doc(user.uid);
+
+    await documentReferencer
+        .delete()
+        .whenComplete(() => print('Note item deleted from the database'))
+        .catchError((e) => print(e));
+  }
 }
