@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 //Market Places
-Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,String ImageLink,String shopName,String shopLocation}){
+Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,String ImageLink,String shopName,String shopLocation,String Email,String Contact,String HRate}){
   return InkWell(
       onTap: () async {
         await Navigator.push(
@@ -16,7 +16,7 @@ Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,
             alignment: Alignment.bottomCenter,
             duration: Duration(milliseconds: 300),
             reverseDuration: Duration(milliseconds: 300),
-            child: MarketPlaceWidget(),
+            child: MarketPlaceWidget(materialName: shopName,Contact: Contact,Email: Email,HRate: HRate,imgaeURL: ImageLink,),
           ),
         );
       },

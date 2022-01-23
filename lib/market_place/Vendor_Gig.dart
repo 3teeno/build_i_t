@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MarketPlaceWidget extends StatefulWidget {
-  const MarketPlaceWidget({Key key}) : super(key: key);
+  final String materialName,Email,Contact,HRate,imgaeURL;
+  const MarketPlaceWidget({Key key,@required this.materialName,@required this.imgaeURL,@required this.Email,@required this.Contact,@required this.HRate}) : super(key: key);
 
   @override
   _MarketPlaceWidgetState createState() => _MarketPlaceWidgetState();
@@ -17,62 +18,22 @@ class MarketPlaceWidget extends StatefulWidget {
 
 class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: AppBar(
+        title: Text("Material Profile"),
+        backgroundColor: Color(0xFFF6EFDE),
+        elevation: 0,
+        foregroundColor: Colors.black,
+      ),
       backgroundColor: Color(0xFFF6EFDE),
       body: SafeArea(
         child: SingleChildScrollView (
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF6EFDE),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                          child: InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomePageWidget(),
-                                ),
-                              );
-                            },
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: Color(0xFF282828),
-                              size: 24,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                          child: Text(
-                            'Store Profile',
-                            style: FlutterFlowTheme.title2.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                 child: SingleChildScrollView(
@@ -105,7 +66,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                   child: Text(
-                                    'John Ehlia',
+                                    widget.materialName,
+                                    //'John Ehlia',
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
@@ -126,7 +88,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                   child: Text(
-                                    'johnehlia@abc.com',
+                                    widget.Email,
+//                                    'johnehlia@abc.com',
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
@@ -147,7 +110,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                   child: Text(
-                                    '+92-3133457896',
+                                    widget.Contact,
+//                                    '+92-3133457896',
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
@@ -168,7 +132,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                   child: Text(
-                                    'PKR..',
+                                    'PKR '+widget.HRate,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
@@ -188,7 +152,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: Image.network(
-                                          'https://nationaleconomyplumber.com/wp-content/uploads/2020/10/Different-Types-of-Plumbers.jpg',
+                                          widget.imgaeURL,
+//                                          'https://nationaleconomyplumber.com/wp-content/uploads/2020/10/Different-Types-of-Plumbers.jpg',
                                         ).image,
                                       ),
                                       borderRadius: BorderRadius.circular(15),
