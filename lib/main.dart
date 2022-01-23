@@ -13,7 +13,8 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-//Hello mateen
+//Updated this Code on 6:42 PM 23RD Jan,2022
+//Continue with this one
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
