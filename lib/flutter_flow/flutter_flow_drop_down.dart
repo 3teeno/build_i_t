@@ -16,7 +16,7 @@ class FlutterFlowDropDown extends StatefulWidget {
     this.borderRadius,
     this.borderColor,
     this.margin,
-    this.hidesUnderline = false,
+    this.hidesUnderline = false, controller,
   });
 
   final String initialOption;

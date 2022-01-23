@@ -283,7 +283,6 @@ class _menuBarState extends State<menuBar> {
                                 async {
                                   final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
                                   await provider.logout();
-
                                     await Navigator.push(
                                       context,
                                       PageTransition(

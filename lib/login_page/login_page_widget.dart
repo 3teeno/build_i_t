@@ -194,17 +194,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      //if(context.read<AuthenticationService>().SignIn(email: emailController.text.trim(),Password: passwordController.text.trim()).toString()=="signed In")
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.rightToLeft,
-                          duration: Duration(milliseconds: 300),
-                          reverseDuration: Duration(milliseconds: 300),
-                          child: HomePageWidget(),
-                        ),
-                      );
-                    },
+                      FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(),password: passwordController.text.trim().toString());
+                      if(!FirebaseAuth.instance.currentUser.emailVerified)
+                        {
+
+                          await Fluttertoast.showToast(msg: "Email not Verified");
+                          Fluttertoast.showToast(msg: "Verification Email Sent");
+                          FirebaseAuth.instance.currentUser
+                              .sendEmailVerification();
+                        }
+                      if(FirebaseAuth.instance.currentUser!=null) {
+                        //final createUserRecord = createUsersRecordData();
+                          await Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              duration: Duration(milliseconds: 300),
+                              reverseDuration: Duration(milliseconds: 300),
+                              child: HomePageWidget(),
+                            ),
+                          );
+                        }
+                      },
                     text: 'Sign In',
                     options: FFButtonOptions(
                       width: 275,
