@@ -28,6 +28,8 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+  //This is the function for Service list extraction
+  Future<List> vendor_list = Database.receiveData();
   TextEditingController textController;
   double ratingBarValue1;
   double ratingBarValue2;
