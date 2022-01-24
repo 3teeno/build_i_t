@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth auth = FirebaseAuth.instance;
-final CollectionReference _mainCollection = _firestore.collection('Vendor_Services');
 final User user = auth.currentUser;
-
+final CollectionReference _mainCollection = _firestore.collection('Vendor_Services');
 class Database {
   static String userUid;
   static Future<void> addItem({
@@ -17,13 +16,15 @@ class Database {
     String Service_HourlyRate,
     String Service_Category,
   }) async {
-    DocumentReference documentReferencer = _mainCollection.doc(user.uid);
+    DocumentReference documentReferencer = _mainCollection.doc();
 
     Map<String, dynamic> data = <String, dynamic>{
       "S_Name": Service_Name,
       "S_Description": Service_Description,
       "S_HourlyRate": Service_HourlyRate,
       "S_Category": Service_Category,
+      "S_uid":user.uid,
+
     };
     await documentReferencer
         .set(data)
@@ -37,13 +38,16 @@ class Database {
     String Service_HourlyRate,
     String Service_Category,
   }) async {
-    DocumentReference documentReferencer = _mainCollection.doc(user.uid);
-
+    _firestore.collection("Vendor_Services").where('S_uid',isEqualTo: user.uid).
+    snapshots().listen(
+    (data) => print('grower ${data.docs[0]['name']}'));
+    DocumentReference documentReferencer = _mainCollection.doc();
     Map<String, dynamic> data = <String, dynamic>{
       "S_Name": Service_Name,
       "S_Description": Service_Description,
       "S_HourlyRate": Service_HourlyRate,
       "S_Category": Service_Category,
+      "S_uid":user.uid,
     };
     await documentReferencer
         .update(data)

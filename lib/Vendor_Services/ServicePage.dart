@@ -20,25 +20,7 @@ class Services_CRUD extends StatefulWidget {
 }
 
 class _Services_CRUDState extends State<Services_CRUD> {
-  // Void Add_Service ()
-  // {
-  //   final User user = auth.currentUser;
-  //   print("Current User Id : "+ user.uid);
-  //   print("Current User Name : "+user.displayName);
-  //   print("Current User Email : "+user.email);
-  //   Map<String, dynamic> data = <String, dynamic>{
-  //     "S_Name": Service_Name.text,
-  //     "S_Description": Service_Description,
-  //     "S_HourlyRate": Service_HourlyRate,
-  //     "S_Category": Service_Category,
-  //   };
-  //  final CollectionReference _mainCollection = _firestore.collection('Vendor_Services');
-  //   DocumentReference documentReferencer = _mainCollection.doc(user.uid).collection('Vendor_Services').doc();
-  //   documentReferencer.set(data).whenComplete(() => print("Notes item added to the database"))
-  //       .catchError((e) => print(e));
-  //
-  //   print("_MainCollection Data :");
-  // }
+
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
