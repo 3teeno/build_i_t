@@ -1,4 +1,5 @@
 import 'package:build_i_t/MenuBar/menubar_top.dart';
+import 'package:build_i_t/VendorServicesModel.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
@@ -40,7 +41,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   MediaQueryData size;
 
-  @override
   void initState() {
     super.initState();
     textController = TextEditingController();

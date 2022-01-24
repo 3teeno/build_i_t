@@ -89,9 +89,14 @@ class Database {
     // Get docs from collection reference
     QuerySnapshot querySnapshot = await _mainCollection.get();
     // Get data from docs and convert map to List
+    final Doc_Reference = querySnapshot.docs.map((doc) => doc.reference.id);
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    print(Doc_Reference);
     print(allData);
-    return allData;
+    //Idhar Aja
+    String MyVendorsLists = allData.toString();
+    print("MyVendorsList : "+ MyVendorsLists);
+    return allData ;
   }
 
 }
