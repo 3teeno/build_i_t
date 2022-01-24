@@ -7,6 +7,16 @@ import 'package:flutter/material.dart';
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth auth = FirebaseAuth.instance;
 final User user = auth.currentUser;
+Future<List<dynamic>> getCollection(CollectionReference collection) async {
+  try {
+    QuerySnapshot snapshot = await collection.get();
+    List<dynamic> result =  snapshot.docs.map((doc) => doc.data()).toList();
+    return result;
+  } catch (error) {
+    print(error);
+    return null;
+  }
+}
 final CollectionReference _mainCollection = _firestore.collection('Vendor_Services');
 class Database {
   static String userUid;
@@ -17,7 +27,6 @@ class Database {
     String Service_Category,
   }) async {
     DocumentReference documentReferencer = _mainCollection.doc();
-
     Map<String, dynamic> data = <String, dynamic>{
       "S_Name": Service_Name,
       "S_Description": Service_Description,
@@ -38,9 +47,18 @@ class Database {
     String Service_HourlyRate,
     String Service_Category,
   }) async {
-    _firestore.collection("Vendor_Services").where('S_uid',isEqualTo: user.uid).
+
+    final FirebaseFirestore find_data =  _firestore.collection("Vendor_Services").where('S_uid',isEqualTo: user.uid).
     snapshots().listen(
-    (data) => print('grower ${data.docs[0]['name']}'));
+    (data) => print('grower ${data.docs[0]['S_uid']}')) as FirebaseFirestore;
+
+    // final QuerySnapshot querySnapshot =await FirebaseFirestore.instance.collection("Vendor_Services").where('S_uid',isEqualTo: user.uid).snapshots().listen((event) { })
+
+    // DocumentReference _stock = _stocks.document('AOOYRNYy3x0E9iezSsOv');
+    // DocumentSnapshot snapshot = await _stock.get();
+    // Map<String,dynamic> data = snapshot.data;
+
+
     DocumentReference documentReferencer = _mainCollection.doc();
     Map<String, dynamic> data = <String, dynamic>{
       "S_Name": Service_Name,
@@ -66,4 +84,14 @@ class Database {
         .whenComplete(() => print('Note item deleted from the database'))
         .catchError((e) => print(e));
   }
+
+  static Future<List> receiveData() async {
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot = await _mainCollection.get();
+    // Get data from docs and convert map to List
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    print(allData);
+    return allData;
+  }
+
 }

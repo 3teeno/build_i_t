@@ -20,7 +20,7 @@ class Services_CRUD extends StatefulWidget {
 }
 
 class _Services_CRUDState extends State<Services_CRUD> {
-
+  Future<List> vendor_list = Database.receiveData();
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -44,7 +44,6 @@ class _Services_CRUDState extends State<Services_CRUD> {
   @override
   Widget build(BuildContext context) {
     //Calling Add New Service
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
@@ -91,7 +90,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                     child: Text(
-                      'Registration',
+                      'My Services',
                       style: FlutterFlowTheme.title2.override(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -308,11 +307,11 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         }
                         else if (task =="Update Service")
                         {
-                          Database.updateItem(
-                              Service_Name: Service_Name.text.toString(),
-                              Service_Description: Service_Description.text.toString(),
-                              Service_HourlyRate: Service_HourlyRate.text.toString(),
-                              Service_Category: Service_Category.text.toString());
+                          // Database.updateItem(
+                          //     Service_Name: Service_Name.text.toString(),
+                          //     Service_Description: Service_Description.text.toString(),
+                          //     Service_HourlyRate: Service_HourlyRate.text.toString(),
+                          //     Service_Category: Service_Category.text.toString());
                         }
                         else {
                           Database.deleteItem(docId : auth.currentUser.uid);
