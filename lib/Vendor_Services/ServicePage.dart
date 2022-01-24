@@ -20,6 +20,7 @@ class Services_CRUD extends StatefulWidget {
 }
 
 class _Services_CRUDState extends State<Services_CRUD> {
+  //This is the function for Service list extraction
   Future<List> vendor_list = Database.receiveData();
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
