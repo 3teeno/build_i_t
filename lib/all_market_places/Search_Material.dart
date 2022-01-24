@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:build_i_t/all_market_places/singleCardDesign.dart';
 import 'package:flutter/material.dart';
+
+import '../data.dart';
 
 class DataSearch extends SearchDelegate<String>{
   @override
@@ -18,24 +22,17 @@ class DataSearch extends SearchDelegate<String>{
         )
     );
   }
-  final data=[
-    'brick',
-    'pipes',
-    'plumber',
-    'construction companies',
-    'home remodeling'
-  ];
-  final data2=[
-    'ALi',
-    'Zafar',
-    'Cheena',
-  ];
+  Random random =new Random();
+  Data data=new Data();
+
+  //List data1=data.chatnames().map((e) => e).toList();
   double ratingValue;
   DataSearch(double ratingV){
     ratingValue=ratingV;
   }
   @override
   List<Widget> buildActions(BuildContext context) {
+
     return [
       IconButton(onPressed: (){
         query="";
@@ -63,15 +60,17 @@ class DataSearch extends SearchDelegate<String>{
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final list=query.isEmpty? data:data.where((p)=>p.toLowerCase().startsWith(query.toLowerCase())).toList();
+    List list1=data.chatnames();
+    print(list1);
+    final list=query.isEmpty? list1:list1.where((p)=>p.toLowerCase().startsWith(query.toLowerCase())).toList();
     print(data);
     return ListView.builder(itemBuilder: (context,index)=>singleCard(
         context,
         ratingBarValue: ratingValue,
-        ratingNo: 5,
-        imageURL: 'https://media.istockphoto.com/photos/stacked-lumber-and-blueprints-at-a-construction-site-picture-id104294966?k=20&m=104294966&s=612x612&w=0&h=IFfLurqe8SF2iPmmhJZzpIM3Mlg0v-HYkrqc8OQ5CNQ='
-        ,storeName: list[index],
-        storLocation: "Lonononn"
+        ratingNo: random.nextInt(5).toDouble(),
+        imageURL: data.imagesServices(),
+        storeName: list[index],
+        storLocation: "Loney Wala"
     ),
       itemCount: list.length,);
     throw UnimplementedError();

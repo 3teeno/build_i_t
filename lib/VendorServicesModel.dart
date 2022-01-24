@@ -94,8 +94,9 @@ class Database {
     print(Doc_Reference);
     print(allData);
     //Idhar Aja
-    String MyVendorsLists = allData.toString();
-    print("MyVendorsList : "+ MyVendorsLists);
+    List MyVendorsLists = allData;
+    print(MyVendorsLists[0]);
+    print(MyVendorsLists);
     return allData ;
   }
 

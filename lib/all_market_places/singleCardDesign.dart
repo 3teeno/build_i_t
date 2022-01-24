@@ -40,8 +40,8 @@ Widget singleCard(BuildContext context,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-//                imageURL,
-                      'https://media.istockphoto.com/photos/stacked-lumber-and-blueprints-at-a-construction-site-picture-id104294966?k=20&m=104294966&s=612x612&w=0&h=IFfLurqe8SF2iPmmhJZzpIM3Mlg0v-HYkrqc8OQ5CNQ=',
+                imageURL,
+//                      'https://media.istockphoto.com/photos/stacked-lumber-and-blueprints-at-a-construction-site-picture-id104294966?k=20&m=104294966&s=612x612&w=0&h=IFfLurqe8SF2iPmmhJZzpIM3Mlg0v-HYkrqc8OQ5CNQ=',
                       width: double.infinity,
                       // height: MediaQuery.of(context).size.height * 0.24,
                       fit: BoxFit.cover,

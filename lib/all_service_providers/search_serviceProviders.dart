@@ -1,6 +1,10 @@
 // import 'package:build_i_t/all_market_places/singleCardDesign.dart';
+import 'dart:math';
+
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:flutter/material.dart';
+
+import '../data.dart';
 
 class search_serviceProviders extends SearchDelegate<String>{
   @override
@@ -18,19 +22,8 @@ class search_serviceProviders extends SearchDelegate<String>{
         )
     );
   }
-  final data=[
-    'brick',
-    'pipes',
-    'plumber',
-    'construction companies',
-    'home remodeling',
-
-  ];
-  final data2=[
-    'ALi',
-    'Zafar',
-    'Cheena',
-  ];
+  Data data1=new Data();
+  Random random=new Random();
   double ratingValue;
   search_serviceProviders(double ratingV){
     ratingValue=ratingV;
@@ -64,9 +57,16 @@ class search_serviceProviders extends SearchDelegate<String>{
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    final data=data1.chatnames();
     final list=query.isEmpty? data:data.where((p)=>p.toLowerCase().startsWith(query.toLowerCase())).toList();
     print(data);
-    return GridView.count(crossAxisCount: 2,children: List.generate(list.length, (index) => serviceProvidersCard(context,ratingNo: 5,ratingBarValue: ratingValue,serviceProviderName: list[index],serviceProviderCatagory: "plumber",imageURL: "https://images.unsplash.com/photo-1569496736555-47c448d556f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80")));
+    return GridView.count(crossAxisCount: 2,children: List.generate(list.length, (index) =>
+        serviceProvidersCard(context,
+            ratingNo: random.nextInt(5).toDouble(),
+            ratingBarValue: ratingValue,
+            serviceProviderName: list[index],
+            serviceProviderCatagory: data1.services(),
+            imageURL: data1.imagesPerson())));
     throw UnimplementedError();
   }
 

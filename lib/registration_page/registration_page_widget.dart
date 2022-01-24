@@ -30,154 +30,156 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
       body: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 100,
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-                maxHeight: 60,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
+                  maxHeight: 60,
+                ),
+                decoration: BoxDecoration(
+                  color: Color(0x00282828),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0, 0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePageWidget(),
+                              ),
+                            );
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: Color(0xFF282828),
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                      child: Text(
+                        'Reset Password',
+                        style: FlutterFlowTheme.title2.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              decoration: BoxDecoration(
-                color: Color(0x00282828),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 1,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF6EFDE),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                      child: TextFormField(
+                        controller: textController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFF282828),
+                          ),
+                          hintText: 'Enter your email',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFF282828),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF282828),
+                              width: 1.5,
+                            ),
+                            borderRadius: BorderRadius.circular(0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF282828),
+                              width: 1.5,
+                            ),
+                            borderRadius: BorderRadius.circular(0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFF282828),
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                      child: FFButtonWidget(
+                        onPressed: () {
+                          MaterialPageRoute(
+                          builder: (context) => LoginPageWidget(),
+                          );
+                          },
+                        text: 'Reset Password',
+                        options: FFButtonOptions(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          color: Color(0xFF282828),
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFFFFB700),
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.5,
+                          ),
+                          borderRadius: 0,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                       child: InkWell(
                         onTap: () async {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomePageWidget(),
+                              builder: (context) => LoginPageWidget(),
                             ),
                           );
                         },
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: Color(0xFF282828),
-                          size: 24,
+                        child: Text(
+                          'back',
+                          style: FlutterFlowTheme.bodyText2,
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                    child: Text(
-                      'Reset Password',
-                      style: FlutterFlowTheme.title2.override(
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 1,
-              decoration: BoxDecoration(
-                color: Color(0xFFF6EFDE),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(50, 20, 50, 0),
-                    child: TextFormField(
-                      controller: textController,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
-                        ),
-                        hintText: 'Enter your email',
-                        hintStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFF282828),
-                            width: 1.5,
-                          ),
-                          borderRadius: BorderRadius.circular(0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFF282828),
-                            width: 1.5,
-                          ),
-                          borderRadius: BorderRadius.circular(0),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                      ),
-                      style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        MaterialPageRoute(
-                        builder: (context) => LoginPageWidget(),
-                        );
-                        },
-                      text: 'Reset Password',
-                      options: FFButtonOptions(
-                        width: 275,
-                        height: 45,
-                        color: Color(0xFF282828),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFFFFB700),
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.5,
-                        ),
-                        borderRadius: 0,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginPageWidget(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'back',
-                        style: FlutterFlowTheme.bodyText1,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

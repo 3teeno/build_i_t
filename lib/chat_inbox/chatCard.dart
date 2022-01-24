@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:build_i_t/chat_inbox/SingleChatScreen.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/market_place/Vendor_Gig.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ Widget chatCard(BuildContext context,{String name,String text,String imageURL}){
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MarketPlaceWidget(),
+                  builder: (context) => singleChat(),
                 ),
               );
             },

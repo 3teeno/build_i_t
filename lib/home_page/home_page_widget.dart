@@ -4,6 +4,7 @@ import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
+import 'package:build_i_t/chat_inbox/chatSearch.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -14,11 +15,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:build_i_t/data.dart';
 import 'homepage_header.dart';
 import 'marketPlaceCard.dart';
-
-
+import 'dart:math';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key key}) : super(key: key);
@@ -31,6 +31,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   //This is the function for Service list extraction
   Future<List> vendor_list = Database.receiveData();
   TextEditingController textController;
+  Random random = new Random();
   double ratingBarValue1;
   double ratingBarValue2;
   double ratingBarValue3;
@@ -50,7 +51,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    size=MediaQuery.of(context);
+    Data data = new Data();
+    Random random = new Random();
+    size = MediaQuery.of(context);
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
@@ -63,7 +66,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           children: [
             Container(
               height: 150,
-              child: homePageHeader() ,
+              child: homePageHeader(),
             ),
             Expanded(
               child: ListView(
@@ -72,8 +75,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 children: [
                   //Build Your Home
                   Padding(
-                    padding:
-                    EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                     child: FFButtonWidget(
                       onPressed: () {
                         print('Build Your Home(Button pressed)');
@@ -115,8 +117,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         InkWell(
-                          onTap:  ()  {
-                            showSearch(context: context, delegate: DataSearch(ratingBarValue1));
+                          onTap: () {
+                            showSearch(
+                                context: context,
+                                delegate: DataSearch(ratingBarValue1));
                           },
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
@@ -139,25 +143,75 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Row(
-
                         mainAxisSize: MainAxisSize.max,
                         children: [
-
                           //Market Places
-                          marketPlaceCard(ratingValue: ratingBarValue1,ratingNo: 4,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Barkat",shopLocation: "Loney Wala",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
-                          SizedBox(width: 10,),
-                          marketPlaceCard(ratingValue: ratingBarValue3,ratingNo: 3,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Cheema Shop",shopLocation: "Sargodha",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
-                          SizedBox(width: 10,),
-                          marketPlaceCard(ratingValue: ratingBarValue3,ratingNo: 3,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Cheema Shop",shopLocation: "Sargodha",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
-                          SizedBox(width: 10,),
-                          marketPlaceCard(ratingValue: ratingBarValue3,ratingNo: 3,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Cheema Shop",shopLocation: "Sargodha",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
-                          SizedBox(width: 10,),
-                          marketPlaceCard(ratingValue: ratingBarValue3,ratingNo: 3,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Cheema Shop",shopLocation: "Sargodha",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
-                          SizedBox(width: 10,),
-                          marketPlaceCard(ratingValue: ratingBarValue3,ratingNo: 3,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Cheema Shop",shopLocation: "Sargodha",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
-                          SizedBox(width: 10,),
-                          marketPlaceCard(ratingValue: ratingBarValue3,ratingNo: 3,context: context,ImageLink: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",shopName: "Cheema Shop",shopLocation: "Sargodha",Email: "abc@gmail.com",Contact: "+92-13456789",HRate: "1500"),
 
+                          marketPlaceCard(
+                              ratingValue: ratingBarValue1,
+                              ratingNo: random.nextInt(5).toDouble(),
+                              context: context,
+                              ImageLink: data.imagesServices().toString(),
+                              shopName: data.names().toString(),
+                              shopLocation: "Loney Wala",
+                              Email: "abc@gmail.com",
+                              Contact: "+92-13456789",
+                              HRate: random.nextInt(3000).toString()),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          marketPlaceCard(
+                              ratingValue: ratingBarValue1,
+                              ratingNo: random.nextInt(5).toDouble(),
+                              context: context,
+                              ImageLink: data.imagesServices().toString(),
+                              shopName: data.names().toString(),
+                              shopLocation: "Loney Wala",
+                              Email: "abc@gmail.com",
+                              Contact: "+92-13456789",
+                              HRate: random.nextInt(3000).toString()),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          marketPlaceCard(
+                              ratingValue: ratingBarValue1,
+                              ratingNo: random.nextInt(5).toDouble(),
+                              context: context,
+                              ImageLink: data.imagesServices().toString(),
+                              shopName: data.names().toString(),
+                              shopLocation: "Loney Wala",
+                              Email: "abc@gmail.com",
+                              Contact: "+92-13456789",
+                              HRate: random.nextInt(3000).toString()),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          marketPlaceCard(
+                              ratingValue: ratingBarValue1,
+                              ratingNo: random.nextInt(5).toDouble(),
+                              context: context,
+                              ImageLink: data.imagesServices().toString(),
+                              shopName: data.names().toString(),
+                              shopLocation: "Loney Wala",
+                              Email: "abc@gmail.com",
+                              Contact: "+92-13456789",
+                              HRate: random.nextInt(3000).toString()),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          marketPlaceCard(
+                              ratingValue: ratingBarValue1,
+                              ratingNo: random.nextInt(5).toDouble(),
+                              context: context,
+                              ImageLink: data.imagesServices().toString(),
+                              shopName: data.names().toString(),
+                              shopLocation: "Loney Wala",
+                              Email: "abc@gmail.com",
+                              Contact: "+92-13456789",
+                              HRate: random.nextInt(3000).toString()),
+                          SizedBox(
+                            width: 10,
+                          ),
                         ],
                       ),
                     ),
@@ -183,8 +237,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
                           child: InkWell(
-                            onTap: (){
-                              showSearch(context: context, delegate: search_serviceProviders(ratingBarValue1));
+                            onTap: () {
+                              showSearch(
+                                  context: context,
+                                  delegate:
+                                      search_serviceProviders(ratingBarValue1));
                             },
                             child: AutoSizeText(
                               'See all',
@@ -205,16 +262,69 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        serviceProvidersCard(context,ratingBarValue: ratingBarValue1,ratingNo: 2,serviceProviderName: "Sharafat",serviceProviderCatagory: "Plumber",imageURL: "https://i.pravatar.cc/150?img=51"),
-                        SizedBox(width: 5,),
-                        serviceProvidersCard(context,ratingBarValue: ratingBarValue1,ratingNo: 3,serviceProviderName: "Ali",serviceProviderCatagory: "Plumber",imageURL: 'https://i.pravatar.cc/150?img=51'),
-                        SizedBox(width: 5,),
-                        serviceProvidersCard(context,ratingBarValue: ratingBarValue1,ratingNo: 5,serviceProviderName: "Faisal",serviceProviderCatagory: "Plumber",imageURL: 'https://i.pravatar.cc/150?img=51'),
-                        SizedBox(width: 5,),
-                        serviceProvidersCard(context,ratingBarValue: ratingBarValue1,ratingNo: 4,serviceProviderName: "Sufi",serviceProviderCatagory: "Plumber",imageURL: 'https://i.pravatar.cc/150?img=51'),
-                        SizedBox(width: 5,),
-                        serviceProvidersCard(context,ratingBarValue: ratingBarValue1,ratingNo: 1,serviceProviderName: "Jhenga",serviceProviderCatagory: "Plumber",imageURL: 'https://i.pravatar.cc/150?img=51'),
-                        SizedBox(width: 5,),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        serviceProvidersCard(context,
+                            ratingBarValue: ratingBarValue1,
+                            ratingNo: random.nextInt(5).toDouble(),
+                            serviceProviderName: data.names().toString(),
+                            serviceProviderCatagory: data.services(),
+                            imageURL: data.imagesPerson().toString()),
+                        SizedBox(
+                          width: 5,
+                        ),
                       ],
                     ),
                   ),
@@ -240,8 +350,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
                           child: InkWell(
-                            onTap: (){
-                              showSearch(context: context, delegate: search_serviceProviders(ratingBarValue1));
+                            onTap: () {
+                              showSearch(
+                                  context: context,
+                                  delegate: chatSearch(data.chatnames()));
                             },
                             child: AutoSizeText(
                               'See all',
@@ -262,9 +374,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
-                      chatCard(context,name: "Umer Hayat",text: "Hello how are you?",imageURL: 'https://picsum.photos/seed/878/600'),
-                      chatCard(context,name: "Kamran",text: "Hollaa",imageURL: 'https://picsum.photos/seed/878/600'),
-
+                      chatCard(context,
+                          name: data.names(),
+                          text: "Hello how are you?",
+                          imageURL: data.imagesPerson()),
+                      chatCard(context,
+                          name: data.names(),
+                          text: "Yup",
+                          imageURL: data.imagesPerson()),
+                      chatCard(context,
+                          name: data.names(),
+                          text: "ok",
+                          imageURL: data.imagesPerson()),
+                      chatCard(context,
+                          name: data.names(),
+                          text: "Need Help?",
+                          imageURL: data.imagesPerson()),
+                      chatCard(context,
+                          name: data.names(),
+                          text: "Hi There?",
+                          imageURL: data.imagesPerson()),
+                      chatCard(context,
+                          name: data.names(),
+                          text: "Your payment is pending...",
+                          imageURL: data.imagesPerson()),
 
                     ],
                   ),
