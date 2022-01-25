@@ -1,6 +1,7 @@
 import 'package:build_i_t/all_market_places/singleCardDesign.dart';
 import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class chatSearch extends SearchDelegate<String>{
   @override

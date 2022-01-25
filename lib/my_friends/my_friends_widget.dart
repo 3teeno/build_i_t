@@ -22,7 +22,7 @@ class _MyFriendsWidgetState extends State<MyFriendsWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.primaryColor,
+        backgroundColor: Color(0XFFF6EFDE) ,
         automaticallyImplyLeading: false,
         title: Text(
           'Users',
@@ -95,9 +95,10 @@ class _MyFriendsWidgetState extends State<MyFriendsWidget> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.96,
+                          width: 350,
                           height: 70,
                           decoration: BoxDecoration(
+                            color: Colors.green[300],
                             boxShadow: [
                               BoxShadow(
                                 offset: Offset(0, 1),
@@ -193,8 +194,7 @@ class _MyFriendsWidgetState extends State<MyFriendsWidget> {
                                                     .bodyText2
                                                     .override(
                                                   fontFamily: 'Lexend Deca',
-                                                  color: FlutterFlowTheme
-                                                      .primaryColor,
+                                                  color: Colors.white,
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w500,
                                                 ),

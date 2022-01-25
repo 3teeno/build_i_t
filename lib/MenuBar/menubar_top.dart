@@ -118,7 +118,7 @@ class _menuBarState extends State<menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MyFriendsWidget(),
+                            builder: (context) => ChatInboxWidget(),
                           ),
                         );
                       },

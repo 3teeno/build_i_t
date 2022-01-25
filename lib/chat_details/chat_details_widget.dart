@@ -57,23 +57,13 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.primaryColor,
+        backgroundColor: Color(0XFFF6EFDE),
         automaticallyImplyLeading: false,
         leading: InkWell(
-          onTap: () async {
-            await Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.leftToRight,
-                duration: Duration(milliseconds: 200),
-                reverseDuration: Duration(milliseconds: 200),
-                //child: NavBarPage(initialPage: 'chatMain'),
-              ),
-            );
-          },
+          onTap: () {},
           child: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.tertiaryColor,
+            color: Colors.black,
             size: 24,
           ),
         ),
@@ -90,7 +80,7 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
               },
               child: Icon(
                 Icons.more_vert,
-                color: FlutterFlowTheme.tertiaryColor,
+                color: Colors.black,
                 size: 24,
               ),
             ),

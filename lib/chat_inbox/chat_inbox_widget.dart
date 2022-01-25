@@ -1,6 +1,7 @@
 import 'package:build_i_t/chat_inbox/chatSearch.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../data.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -19,13 +20,9 @@ class ChatInboxWidget extends StatefulWidget {
 
 class _ChatInboxWidgetState extends State<ChatInboxWidget> {
   TextEditingController textController;
+  Data data= new Data();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  List data1=[
-    'ALi',
-    'Mateen',
-    'Jundi',
-    'Dany Alexa'
-  ];
+
   @override
   void initState() {
     super.initState();
@@ -34,6 +31,7 @@ class _ChatInboxWidgetState extends State<ChatInboxWidget> {
 
   @override
   Widget build(BuildContext context) {
+    List data1=data.chatnames();
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(title: Text("Messages"),
@@ -51,7 +49,13 @@ class _ChatInboxWidgetState extends State<ChatInboxWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: ListView.builder(itemBuilder: (context,index)=>chatCard(context,name: data1[index],text:"Text Here",imageURL: "https://images.unsplash.com/photo-1603482635787-c6e3f4e18215?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80"),itemCount: data1.length,),
+            child: ListView.builder(itemBuilder: (context,index)=>
+                chatCard(context,
+                    name: data1[index],
+                    text:"Helloo...",
+                    imageURL: data.imagesPerson()
+                ),
+              itemCount: data1.length,),
           ),
         ],
       ),
