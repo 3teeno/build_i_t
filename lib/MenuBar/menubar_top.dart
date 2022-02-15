@@ -3,6 +3,7 @@ import 'package:build_i_t/chat_inbox/chat_inbox_widget.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
+import 'package:build_i_t/my_friends/my_friends_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:build_i_t/authentication_service.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
