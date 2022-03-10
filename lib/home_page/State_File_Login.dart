@@ -2,7 +2,7 @@ import 'package:build_i_t/login_page/login_page_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page_widget.dart';
+import 'CustomerHomePage.dart';
 
 class stateLogin extends StatelessWidget {
   const stateLogin({Key key}) : super(key: key);

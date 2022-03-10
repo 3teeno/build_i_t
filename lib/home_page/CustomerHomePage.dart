@@ -216,6 +216,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                   ),
+
+
                   //Services Providers (Text Row)
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),

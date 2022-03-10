@@ -1,6 +1,7 @@
 import 'package:build_i_t/home_page/State_File_Login.dart';
-import 'package:build_i_t/home_page/home_page_widget.dart';
+import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:build_i_t/main.dart';
+import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import '../authentication_service.dart';
@@ -205,6 +206,29 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             }
                           else if(FirebaseAuth.instance.currentUser!=null) {
                             //final createUserRecord = createUsersRecordData();
+                            if(dropDownValue=="Customer"){
+                              await Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child: HomePageWidget(),
+                                ),
+                              );
+                            }
+                            else if(dropDownValue=="Vendor"){
+                              await Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                  duration: Duration(milliseconds: 300),
+                                  reverseDuration: Duration(milliseconds: 300),
+                                  child: SearchPageWidget(),
+                                ),
+                              );
+                            }
+                            else if(dropDownValue=="Service Provider"){
                               await Navigator.push(
                                 context,
                                 PageTransition(
@@ -216,6 +240,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               );
                             }
 
+                            }
+                          else{
+                            final snackBar= SnackBar(content: Text("Please enter email or password!"));
+                            Scaffold.of(context).showSnackBar(snackBar);
+                          }
                           },
                         text: 'Sign In',
                         options: FFButtonOptions(
