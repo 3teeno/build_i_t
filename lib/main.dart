@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -28,18 +29,44 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-      create: (context) => GoogleSignInProvider(),
-      child: MaterialApp(
-      title: 'BuildIT',
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [Locale('en', '')],
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: LoginPageWidget(),
-    ));
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print("Something went wrong!");
+          }
+          if (snapshot.connectionState == ConnectionState.done) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: LoginPageWidget(),
+            );
+          }
+          return Center(child: Lottie.network("https://assets7.lottiefiles.com/packages/lf20_lz5srsyo.json",repeat: true),);
+        });
   }
+
+}
+
+
+
+
+//Extra
+
+// => ChangeNotifierProvider(
+//     create: (context) => GoogleSignInProvider(),
+//     child: MaterialApp(
+//     title: 'BuildIT',
+//     localizationsDelegates: [
+//       GlobalMaterialLocalizations.delegate,
+//       GlobalWidgetsLocalizations.delegate,
+//       GlobalCupertinoLocalizations.delegate,
+//     ],
+//     supportedLocales: const [Locale('en', '')],
+//     theme: ThemeData(primarySwatch: Colors.blue),
+//     home: LoginPageWidget(),
+//   ));
+// }

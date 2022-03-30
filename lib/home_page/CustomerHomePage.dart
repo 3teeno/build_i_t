@@ -49,6 +49,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     textController = TextEditingController();
   }
 
+  final List services = ['Electricion', 'Plumber', 'Carpenter', 'Painter'];
   @override
   Widget build(BuildContext context) {
     Data data = new Data();
@@ -98,6 +99,54 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                   ),
+
+                  //Services Providers (Text Row)
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                          child: AutoSizeText(
+                            'Service Providers',
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.title3.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                          child: InkWell(
+                            onTap: () {
+                              showSearch(
+                                  context: context,
+                                  delegate:
+                                      search_serviceProviders(ratingBarValue1));
+                            },
+                            child: AutoSizeText(
+                              'See all',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF4F4F4F),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  
+
+                  serviceProvidersCard(
+                      context,
+                      serviceName: services[0]),
                   //Maekrt Places (Text Row)
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
@@ -217,120 +266,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
 
-
-                  //Services Providers (Text Row)
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: AutoSizeText(
-                            'Service Providers',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.title3.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: InkWell(
-                            onTap: () {
-                              showSearch(
-                                  context: context,
-                                  delegate:
-                                      search_serviceProviders(ratingBarValue1));
-                            },
-                            child: AutoSizeText(
-                              'See all',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.title3.override(
-                                fontFamily: 'Poppins',
-                                color: Color(0xFF4F4F4F),
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        serviceProvidersCard(context,
-                            ratingBarValue: ratingBarValue1,
-                            ratingNo: random.nextInt(5).toDouble(),
-                            serviceProviderName: data.names().toString(),
-                            serviceProviderCatagory: data.services(),
-                            imageURL: data.imagesPerson().toString()),
-                        SizedBox(
-                          width: 5,
-                        ),
-                      ],
-                    ),
-                  ),
-
                   //Recent Chat
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
@@ -400,7 +335,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           name: data.names(),
                           text: "Your payment is pending...",
                           imageURL: data.imagesPerson()),
-
                     ],
                   ),
                 ],

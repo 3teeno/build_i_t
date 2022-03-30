@@ -1,4 +1,5 @@
 import 'package:build_i_t/login_page/login_page_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -17,11 +18,24 @@ class RegistrationPageWidget extends StatefulWidget {
 class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
     textController = TextEditingController();
+  }
+
+  ResetPassword() async {
+    try{
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: textController.text.trim());
+      scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Reset Password Email Sent.")));
+      textController.clear();
+    }
+    catch(e){
+      if(e.code=="user-not-found"){
+        scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("No user found for email!",style: TextStyle(color: Colors.black),),backgroundColor: Colors.redAccent,));
+      }
+    }
   }
 
   @override
@@ -58,7 +72,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePageWidget(),
+                                builder: (context) => LoginPageWidget(),
                               ),
                             );
                           },
@@ -89,93 +103,106 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                 decoration: BoxDecoration(
                   color: Color(0xFFF6EFDE),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
-                      child: TextFormField(
-                        controller: textController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          labelStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
-                          ),
-                          hintText: 'Enter your email',
-                          hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFF282828),
-                              width: 1.5,
-                            ),
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFF282828),
-                              width: 1.5,
-                            ),
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                          filled: true,
-                          fillColor: Colors.white,
-                        ),
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          MaterialPageRoute(
-                          builder: (context) => LoginPageWidget(),
-                          );
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                        child: TextFormField(
+                          controller: textController,
+                          obscureText: false,
+                          validator: (value){
+                            if(value==null || value.isEmpty){
+                              return 'please enter your email';
+                            }
+                            else if(!value.contains("@")){
+                              return 'please enter valid email';
+                            }
+                            return null;
                           },
-                        text: 'Reset Password',
-                        options: FFButtonOptions(
-                          width: MediaQuery.of(context).size.width,
-                          height: 45,
-                          color: Color(0xFF282828),
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFFFFB700),
-                          ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.5,
-                          ),
-                          borderRadius: 0,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                      child: InkWell(
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginPageWidget(),
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            labelStyle: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF282828),
                             ),
-                          );
-                        },
-                        child: Text(
-                          'back',
-                          style: FlutterFlowTheme.bodyText2,
+                            hintText: 'Enter your email',
+                            hintStyle: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF282828),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF282828),
+                                width: 1.5,
+                              ),
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF282828),
+                                width: 1.5,
+                              ),
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                          ),
+                          style: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFF282828),
+                          ),
+                          textAlign: TextAlign.start,
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            if(!_formKey.currentState.validate()){
+                              return null;
+                            }
+                            ResetPassword();
+                            },
+                          text: 'Reset Password',
+                          options: FFButtonOptions(
+                            width: MediaQuery.of(context).size.width,
+                            height: 45,
+                            color: Color(0xFF282828),
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFFFFB700),
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.5,
+                            ),
+                            borderRadius: 0,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginPageWidget(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'back',
+                            style: FlutterFlowTheme.bodyText2,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

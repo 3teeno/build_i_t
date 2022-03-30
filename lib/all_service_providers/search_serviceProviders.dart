@@ -62,11 +62,9 @@ class search_serviceProviders extends SearchDelegate<String>{
     print(data);
     return GridView.count(crossAxisCount: 2,children: List.generate(list.length, (index) =>
         serviceProvidersCard(context,
-            ratingNo: random.nextInt(5).toDouble(),
-            ratingBarValue: ratingValue,
-            serviceProviderName: list[index],
-            serviceProviderCatagory: data1.services(),
-            imageURL: data1.imagesPerson())));
+
+            serviceName: list[index],
+            )));
     throw UnimplementedError();
   }
 
