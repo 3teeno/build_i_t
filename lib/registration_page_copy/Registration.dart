@@ -25,7 +25,7 @@ class RegistrationPageCopyWidget extends StatefulWidget {
 
 class _RegistrationPageCopyWidgetState
     extends State<RegistrationPageCopyWidget> {
-  String dropDownValue="Customer";
+  String dropDownValue = "Customer";
   TextEditingController FullNameController;
   TextEditingController EmailController;
   TextEditingController PhoneController;
@@ -34,7 +34,7 @@ class _RegistrationPageCopyWidgetState
   TextEditingController ConfirmPasswordController;
   String Type = "Customer";
   bool passwordVisibility2;
-
+  AuthenticationService auth = new AuthenticationService(FirebaseAuth.instance);
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -50,12 +50,19 @@ class _RegistrationPageCopyWidgetState
   }
 
   bool loading = false;
-  CollectionReference user=FirebaseFirestore.instance.collection('users');
-  Future<void> addUser(){
-    return user.add({'name':FullNameController.text,'email':EmailController.text,'phone':PhoneController.text,'type':dropDownValue})
-    .then((value) => print("User Added")).catchError((error)=>print("User not added $error"));
+  CollectionReference user = FirebaseFirestore.instance.collection('users');
+  Future<void> addUser() {
+    return user
+        .add({
+          'name': FullNameController.text,
+          'email': EmailController.text,
+          'phone': PhoneController.text,
+          'type': dropDownValue
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("User not added $error"));
   }
-  registration() async {}
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +91,7 @@ class _RegistrationPageCopyWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(30, 15, 30, 0),
                   child: FlutterFlowDropDown(
-                    options:
-                        ['Customer', 'Vendor', 'Admin'].toList(),
+                    options: ['Customer', 'Vendor', 'Admin'].toList(),
                     onChanged: (val) => (setState(() {
                       dropDownValue = val;
                       Type = val;
@@ -391,35 +397,30 @@ class _RegistrationPageCopyWidgetState
                                         password:
                                             PasswordController.text.trim());
                                 if (FirebaseAuth.instance.currentUser != null) {
-                                  if (!FirebaseAuth
-                                      .instance.currentUser.emailVerified) {
-                                    await FirebaseAuth.instance.currentUser
-                                        .sendEmailVerification();
-                                    scaffoldKey.currentState.showSnackBar(SnackBar(
+                                    scaffoldKey.currentState
+                                        .showSnackBar(SnackBar(
                                       content: Text(
-                                        "Account verification email sent!",
+                                        "Account created successfully!",
                                         style: TextStyle(color: Colors.black),
                                       ),
                                       backgroundColor: Colors.lightGreen,
                                     ));
 
                                     //Storing data to realtime database
-addUser();
-//Clearing fields
+                                    addUser();
                                     FullNameController.clear();
                                     EmailController.clear();
                                     PhoneController.clear();
                                     PasswordController.clear();
                                     ConfirmPasswordController.clear();
-                                  }
-                                  if (FirebaseAuth
-                                      .instance.currentUser.emailVerified) {
+
+
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 LoginPageWidget()));
-                                  }
+
                                 }
 
                                 setState(() {
@@ -463,7 +464,7 @@ addUser();
                               ));
                             }
 
-                            registration();
+
                             //verifyEmail();
                             // await FirebaseAuth.instance.createUserWithEmailAndPassword(
                             //     email: EmailController.text.trim(),
