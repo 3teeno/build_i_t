@@ -14,6 +14,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../home_page/CustomerHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:email_auth/email_auth.dart';
 
 class RegistrationPageCopyWidget extends StatefulWidget {
   const RegistrationPageCopyWidget({Key key}) : super(key: key);
@@ -23,16 +24,23 @@ class RegistrationPageCopyWidget extends StatefulWidget {
       _RegistrationPageCopyWidgetState();
 }
 
+EmailAuth emailAuth;
+bool submitValid = false;
+TextEditingController otpControllet;
+
 class _RegistrationPageCopyWidgetState
     extends State<RegistrationPageCopyWidget> {
   String dropDownValue = "Customer";
   TextEditingController FullNameController;
+  TextEditingController xyz;
   TextEditingController EmailController;
   TextEditingController PhoneController;
   TextEditingController PasswordController;
+  PersistentBottomSheetController bsController;
   bool passwordVisibility1;
   TextEditingController ConfirmPasswordController;
   String Type = "Customer";
+  String otp;
   bool passwordVisibility2;
   AuthenticationService auth = new AuthenticationService(FirebaseAuth.instance);
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -49,6 +57,93 @@ class _RegistrationPageCopyWidgetState
     passwordVisibility2 = false;
   }
 
+  void sendOTP() async {
+    emailAuth = new EmailAuth(
+      sessionName: "Sample session",
+    );
+    bool result = await emailAuth.sendOtp(
+        recipientMail: EmailController.value.text, otpLength: 5);
+    if (result) {
+      setState(() {
+        submitValid = true;
+      });
+    }
+  }
+
+  Future<bool> validateOTP() {
+    print
+      (otpControllet.value.text);
+    return Future.value(true);
+    // print(emailAuth.validateOtp(
+    //     recipientMail: EmailController.value.text,
+    //     userOtp: otpControllet.value.text));
+    // if (emailAuth.validateOtp(
+    //     recipientMail: EmailController.value.text,
+    //     userOtp: otpControllet.value.text)) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+  }
+
+  Container _buildBottomSheet(BuildContext context) {
+    return Container(
+      height: 300,
+      padding: EdgeInsets.all(8),
+      child: ListView(
+        children: [
+          Text(
+            'Verification OTP sent to your email.',
+            style: FlutterFlowTheme.bodyText1.override(
+              fontFamily: 'Poppins',
+              fontSize: 14,
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          TextFormField(
+            keyboardType: TextInputType.number,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter OTP';
+              }
+              return null;
+            },
+            controller: otpControllet,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), labelText: "Enter OTP"),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          FFButtonWidget(
+            onPressed: () async {
+              if(await validateOTP()){
+                Navigator.pop(context);
+              }
+            },
+            text: 'Verify OTP',
+            options: FFButtonOptions(
+              width: MediaQuery.of(context).size.width,
+              height: 60,
+              color: Color(0xFF282828),
+              textStyle: FlutterFlowTheme.subtitle2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFFB700),
+              ),
+              borderSide: BorderSide(
+                color: Colors.transparent,
+                width: 1,
+              ),
+              borderRadius: 0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   bool loading = false;
   CollectionReference user = FirebaseFirestore.instance.collection('users');
   Future<void> addUser() {
@@ -62,7 +157,6 @@ class _RegistrationPageCopyWidgetState
         .then((value) => print("User Added"))
         .catchError((error) => print("User not added $error"));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -391,38 +485,62 @@ class _RegistrationPageCopyWidgetState
                             if (PasswordController.text ==
                                 ConfirmPasswordController.text) {
                               try {
-                                await FirebaseAuth.instance
-                                    .createUserWithEmailAndPassword(
-                                        email: EmailController.text.trim(),
-                                        password:
-                                            PasswordController.text.trim());
-                                if (FirebaseAuth.instance.currentUser != null) {
-                                    scaffoldKey.currentState
-                                        .showSnackBar(SnackBar(
-                                      content: Text(
-                                        "Account created successfully!",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      backgroundColor: Colors.lightGreen,
-                                    ));
+                                if (FirebaseAuth.instance.currentUser == null) {
+                                  //Sending otp
+                                  sendOTP();
+                                  //Opening Bottom Sheet
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) =>
+                                          _buildBottomSheet(context));
+                                  if(await validateOTP()){
+                                    print("bottom sheet ka neechy ");
+                                  }
 
-                                    //Storing data to realtime database
-                                    addUser();
-                                    FullNameController.clear();
-                                    EmailController.clear();
-                                    PhoneController.clear();
-                                    PasswordController.clear();
-                                    ConfirmPasswordController.clear();
-
-
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                LoginPageWidget()));
-
+                                  // scaffoldKey.currentState.showBottomSheet(
+                                  //     (context) => _buildBottomSheet(context));
+                                  //Validating otp
+                                  // if (validateOTP()==1) {
+                                  //   print("Validated");
+                                  //   await FirebaseAuth.instance
+                                  //       .createUserWithEmailAndPassword(
+                                  //           email: EmailController.text.trim(),
+                                  //           password:
+                                  //               PasswordController.text.trim());
+                                  //   addUser();
+                                  //   FullNameController.clear();
+                                  //   EmailController.clear();
+                                  //   PhoneController.clear();
+                                  //   PasswordController.clear();
+                                  //   ConfirmPasswordController.clear();
+                                  //   Navigator.pushReplacement(
+                                  //       context,
+                                  //       MaterialPageRoute(
+                                  //           builder: (context) =>
+                                  //               LoginPageWidget()));
+                                  // }
+                                  // FirebaseAuth.instance.currentUser
+                                  //     .sendEmailVerification();
+                                  // scaffoldKey.currentState
+                                  //     .showSnackBar(SnackBar(
+                                  //   content: Text(
+                                  //     "Verification Email Sent!",
+                                  //     style: TextStyle(color: Colors.black),
+                                  //   ),
+                                  //   backgroundColor: Colors.lightGreen,
+                                  // ));
+                                  // //Storing data to realtime database
+                                  // StreamBuilder(
+                                  //   stream: FirebaseAuth.instance
+                                  //       .authStateChanges(),
+                                  //   builder: (context, snapshot) {
+                                  //     if (FirebaseAuth
+                                  //         .instance.currentUser.emailVerified) {
+                                  //
+                                  //     }
+                                  //   },
+                                  // );
                                 }
-
                                 setState(() {
                                   loading = false;
                                 });
@@ -462,8 +580,10 @@ class _RegistrationPageCopyWidgetState
                                 ),
                                 backgroundColor: Colors.redAccent,
                               ));
+                              setState(() {
+                                loading = false;
+                              });
                             }
-
 
                             //verifyEmail();
                             // await FirebaseAuth.instance.createUserWithEmailAndPassword(
