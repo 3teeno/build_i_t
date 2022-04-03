@@ -11,9 +11,9 @@ import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../registration_page/ForgotPassword.dart';
-import '../registration_page_copy/Registration.dart';
+import 'package:build_i_t/Forgot Password/ForgotPassword.dart';
 import 'package:flutter/material.dart';
+import 'package:build_i_t/registration_page/Registration.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -94,13 +94,13 @@ class _logInState extends State<logIn> {
                             borderWidth: 1.5,
                             borderRadius: 0,
                             margin:
-                            EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+                                EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
                             hidesUnderline: true,
                           ),
                         ),
                         Padding(
                           padding:
-                          EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
+                              EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
                           child: TextFormField(
                             controller: emailController,
                             obscureText: false,
@@ -158,7 +158,7 @@ class _logInState extends State<logIn> {
                         ),
                         Padding(
                           padding:
-                          EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
+                              EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
                           child: TextFormField(
                             controller: passwordController,
                             obscureText: !passwordVisibility,
@@ -206,8 +206,8 @@ class _logInState extends State<logIn> {
                               fillColor: Colors.white,
                               suffixIcon: InkWell(
                                 onTap: () => setState(
-                                      () =>
-                                  passwordVisibility = !passwordVisibility,
+                                  () =>
+                                      passwordVisibility = !passwordVisibility,
                                 ),
                                 child: Icon(
                                   passwordVisibility
@@ -227,80 +227,80 @@ class _logInState extends State<logIn> {
                         ),
                         Padding(
                           padding:
-                          EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
+                              EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
                           child: loading
                               ? Lottie.network(
-                              'https://assets8.lottiefiles.com/packages/lf20_kxsd2ytq.json',
-                              width: 50,
-                              height: 50,
-                              repeat: true)
+                                  'https://assets8.lottiefiles.com/packages/lf20_kxsd2ytq.json',
+                                  width: 50,
+                                  height: 50,
+                                  repeat: true)
                               : FFButtonWidget(
-                            onPressed: () async {
-                              if (!_formKey.currentState.validate()) {
-                                return null;
-                              }
-                              setState(() {
-                                loading = true;
-                              });
-                              try {
+                                  onPressed: () async {
+                                    if (!_formKey.currentState.validate()) {
+                                      return null;
+                                    }
+                                    setState(() {
+                                      loading = true;
+                                    });
+                                    if(FirebaseAuth.instance.currentUser.emailVerified){
+                                      scaffoldKey.currentState.showSnackBar(SnackBar(duration: Duration(milliseconds: 10000),content: Text("Email is verified")));
+                                    }
+                                    try {
+                                      await FirebaseAuth.instance
+                                          .signInWithEmailAndPassword(
+                                              email:
+                                                  emailController.text.trim(),
+                                              password: passwordController.text
+                                                  .trim());
+                                      scaffoldKey.currentState.showSnackBar(
+                                          SnackBar(
+                                              content: Text(
+                                                  'Logged In Successfully!')));
 
-                                await FirebaseAuth.instance
-                                    .signInWithEmailAndPassword(
-                                    email:
-                                    emailController.text.trim(),
-                                    password: passwordController
-                                        .text
-                                        .trim());
-                                scaffoldKey.currentState.showSnackBar(
-                                    SnackBar(
-                                        content: Text(
-                                            'Logged In Successfully!')));
-
-                                //check which user login
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            HomePageWidget()));
-
-                              } on FirebaseAuthException catch (e) {
-                                if (e.code == "user-not-found") {
-                                  scaffoldKey.currentState.showSnackBar(
-                                      SnackBar(
-                                          content:
-                                          Text('No user found')));
-                                  setState(() {
-                                    loading = false;
-                                  });
-                                }
-                                if (e.code == "wrong-password") {
-                                  scaffoldKey.currentState.showSnackBar(
-                                      SnackBar(
-                                          content: Text(
-                                              'Wrong password entered')));
-                                  setState(() {
-                                    loading = false;
-                                  });
-                                }
-                              }
-                            },
-                            text: 'Sign In',
-                            options: FFButtonOptions(
-                              width: MediaQuery.of(context).size.width,
-                              height: 60,
-                              color: Color(0xFF282828),
-                              textStyle:
-                              FlutterFlowTheme.subtitle2.override(
-                                fontFamily: 'Poppins',
-                                color: Color(0xFFFFB700),
-                              ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
-                              borderRadius: 0,
-                            ),
-                          ),
+                                      //check which user login
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HomePageWidget()));
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == "user-not-found") {
+                                        scaffoldKey.currentState.showSnackBar(
+                                            SnackBar(
+                                                content:
+                                                    Text('No user found')));
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                      }
+                                      if (e.code == "wrong-password") {
+                                        scaffoldKey.currentState.showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    'Wrong password entered')));
+                                        setState(() {
+                                          loading = false;
+                                        });
+                                      }
+                                    }
+                                  },
+                                  text: 'Sign In',
+                                  options: FFButtonOptions(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 60,
+                                    color: Color(0xFF282828),
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFFFFB700),
+                                    ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                    borderRadius: 0,
+                                  ),
+                                ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
