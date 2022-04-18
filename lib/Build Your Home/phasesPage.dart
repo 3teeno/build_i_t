@@ -85,7 +85,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
     // });
     DocumentReference documentReference=_mainCollection.doc(user.uid);
     Map<String, dynamic> data = <String, dynamic>{
-      "1" : 0,
+      "1" : 1,
       "2": 0,
       "3": 0,
       "4": 0,
