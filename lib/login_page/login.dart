@@ -312,7 +312,7 @@ class _logInState extends State<logIn> {
                                   type: PageTransitionType.rightToLeft,
                                   duration: Duration(milliseconds: 300),
                                   reverseDuration: Duration(milliseconds: 300),
-                                  child: RegistrationPageWidget(),
+                                  child: HomePageWidget(),
                                 ),
                               );
                             },

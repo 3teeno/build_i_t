@@ -1,3 +1,5 @@
+import 'package:build_i_t/Build%20Your%20Home/BuildYourHome_Main.dart';
+import 'package:build_i_t/Build%20Your%20Home/phasesPage.dart';
 import 'package:build_i_t/MenuBar/menubar_top.dart';
 import 'package:build_i_t/VendorServicesModel.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
@@ -7,6 +9,7 @@ import 'package:build_i_t/chat_inbox/chatCard.dart';
 import 'package:build_i_t/chat_inbox/chatSearch.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
+import 'package:firebase_database/firebase_database.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -19,6 +22,7 @@ import 'package:build_i_t/data.dart';
 import 'homepage_header.dart';
 import 'marketPlaceCard.dart';
 import 'dart:math';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key key}) : super(key: key);
@@ -43,10 +47,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   double ratingBarValue9;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   MediaQueryData size;
+  // Obtain shared preferences.
+  DatabaseReference _databaseReference;
 
+  int initScreen;
   void initState() {
     super.initState();
     textController = TextEditingController();
+    _databaseReference = FirebaseDatabase.instance.ref().child("showScreen");
   }
 
   final List services = ['Electricion', 'Plumber', 'Carpenter', 'Painter'];
@@ -78,8 +86,50 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Build Your Home(Button pressed)');
+                      onPressed: () async {
+                        _databaseReference.onValue.listen((event) {
+                          final data = event.snapshot.value;
+                          print(data);
+                          if(data==null || data==0){
+                            _databaseReference.set(1);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => startingScreen()));
+                          }
+                          if(data==1){
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => phasesPageMain()));
+                          }
+                        });
+                        // _databaseReference.once().then((value) => print(""+value.toString()));
+
+                        if (_databaseReference.child("showScreen").get() == 0) {
+                          // preferences.setInt("initScreen", 0);
+
+
+                        } else if (_databaseReference
+                                .child("showScreen")
+                                .get() ==
+                            1) {
+
+                        }
+                        // if(initScreen==0){
+                        //   print("na karai Show it");
+                        // }
+                        //
+                        // final prefs = await SharedPreferences.getInstance();
+                        //  if(prefs.getBool("isLoad")==true){
+                        //   prefs.setBool("isLoad", false);
+                        //   prefs.remove("isLoad");
+                        //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>startingScreen()));
+                        //
+                        // }
+                        // else{
+                        //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>phasesPageMain()));
+                        // }
                       },
                       text: 'Build Your Home',
                       options: FFButtonOptions(
@@ -142,11 +192,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
 
-                  
-
-                  serviceProvidersCard(
-                      context,
-                      serviceName: services[0]),
+                  serviceProvidersCard(context, serviceName: services[0]),
                   //Maekrt Places (Text Row)
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
