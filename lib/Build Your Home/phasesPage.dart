@@ -85,7 +85,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
     // });
     DocumentReference documentReference=_mainCollection.doc(user.uid);
     Map<String, dynamic> data = <String, dynamic>{
-      "1" : 1,
+      "1" : 0,
       "2": 0,
       "3": 0,
       "4": 0,
@@ -326,7 +326,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
                       color: Color(0xFF123456)),
                   child: Image.asset(
                     "assets/images/Insulation.jfif",
-                    fit: BoxFit.cover,
+                       fit: BoxFit.cover,
                   ),
                 ),
                 //Text Show less column
