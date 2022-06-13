@@ -65,22 +65,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     size = MediaQuery.of(context);
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF6EFDE),
+      backgroundColor: Color(0xFFFFFFFF),
       drawer: menuBar(),
       body: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 150,
-              child: homePageHeader(),
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 150,
+                child: homePageHeader(),
+              ),
+              Column(
+                // padding: EdgeInsets.zero,
+                // scrollDirection: Axis.vertical,
                 children: [
                   //Build Your Home
                   Padding(
@@ -135,10 +135,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       options: FFButtonOptions(
                         width: MediaQuery.of(context).size.width,
                         height: 45,
-                        color: Color(0xFF282828),
+                        color: Color(0xFFF2F2F2),
                         textStyle: FlutterFlowTheme.subtitle2.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFFFFB700),
+                          color: Color(0xFF282828),
                           fontWeight: FontWeight.normal,
                         ),
                         borderSide: BorderSide(
@@ -150,49 +150,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
 
-                  //Services Providers (Text Row)
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: AutoSizeText(
-                            'Service Providers',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.title3.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: InkWell(
-                            onTap: () {
-                              showSearch(
-                                  context: context,
-                                  delegate:
-                                      search_serviceProviders(ratingBarValue1));
-                            },
-                            child: AutoSizeText(
-                              'See all',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.title3.override(
-                                fontFamily: 'Poppins',
-                                color: Color(0xFF4F4F4F),
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
 
-                  serviceProvidersCard(context, serviceName: services[0]),
                   //Maekrt Places (Text Row)
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
@@ -233,160 +191,94 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ],
                     ),
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          //Market Places
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.all(10),
+                  //     child: GridView.builder(gridDelegate: gridDelegate, itemBuilder: itemBuilder)
+                  //
+                  //   ),
+                  // ),
 
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
 
-                  //Recent Chat
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: AutoSizeText(
-                            'Recent Chat',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.title3.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                          child: InkWell(
-                            onTap: () {
-                              showSearch(
-                                  context: context,
-                                  delegate: chatSearch(data.chatnames()));
-                            },
-                            child: AutoSizeText(
-                              'See all',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.title3.override(
-                                fontFamily: 'Poppins',
-                                color: Color(0xFF4F4F4F),
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      chatCard(context,
-                          name: data.names(),
-                          text: "Hello how are you?",
-                          imageURL: data.imagesPerson()),
-                      chatCard(context,
-                          name: data.names(),
-                          text: "Yup",
-                          imageURL: data.imagesPerson()),
-                      chatCard(context,
-                          name: data.names(),
-                          text: "ok",
-                          imageURL: data.imagesPerson()),
-                      chatCard(context,
-                          name: data.names(),
-                          text: "Need Help?",
-                          imageURL: data.imagesPerson()),
-                      chatCard(context,
-                          name: data.names(),
-                          text: "Hi There?",
-                          imageURL: data.imagesPerson()),
-                      chatCard(context,
-                          name: data.names(),
-                          text: "Your payment is pending...",
-                          imageURL: data.imagesPerson()),
-                    ],
-                  ),
+                  //GridView Marketplaces
+                  // Column(
+                  //   mainAxisSize: MainAxisSize.max,
+                  //   children: [
+                  //     //Market Places
+                  //
+                  //     marketPlaceCard(
+                  //         ratingValue: ratingBarValue1,
+                  //         ratingNo: random.nextInt(5).toDouble(),
+                  //         context: context,
+                  //         ImageLink: data.imagesServices().toString(),
+                  //         shopName: data.names().toString(),
+                  //         shopLocation: "Loney Wala",
+                  //         Email: "abc@gmail.com",
+                  //         Contact: "+92-13456789",
+                  //         HRate: random.nextInt(3000).toString()),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     marketPlaceCard(
+                  //         ratingValue: ratingBarValue1,
+                  //         ratingNo: random.nextInt(5).toDouble(),
+                  //         context: context,
+                  //         ImageLink: data.imagesServices().toString(),
+                  //         shopName: data.names().toString(),
+                  //         shopLocation: "Loney Wala",
+                  //         Email: "abc@gmail.com",
+                  //         Contact: "+92-13456789",
+                  //         HRate: random.nextInt(3000).toString()),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     marketPlaceCard(
+                  //         ratingValue: ratingBarValue1,
+                  //         ratingNo: random.nextInt(5).toDouble(),
+                  //         context: context,
+                  //         ImageLink: data.imagesServices().toString(),
+                  //         shopName: data.names().toString(),
+                  //         shopLocation: "Loney Wala",
+                  //         Email: "abc@gmail.com",
+                  //         Contact: "+92-13456789",
+                  //         HRate: random.nextInt(3000).toString()),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     marketPlaceCard(
+                  //         ratingValue: ratingBarValue1,
+                  //         ratingNo: random.nextInt(5).toDouble(),
+                  //         context: context,
+                  //         ImageLink: data.imagesServices().toString(),
+                  //         shopName: data.names().toString(),
+                  //         shopLocation: "Loney Wala",
+                  //         Email: "abc@gmail.com",
+                  //         Contact: "+92-13456789",
+                  //         HRate: random.nextInt(3000).toString()),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     marketPlaceCard(
+                  //         ratingValue: ratingBarValue1,
+                  //         ratingNo: random.nextInt(5).toDouble(),
+                  //         context: context,
+                  //         ImageLink: data.imagesServices().toString(),
+                  //         shopName: data.names().toString(),
+                  //         shopLocation: "Loney Wala",
+                  //         Email: "abc@gmail.com",
+                  //         Contact: "+92-13456789",
+                  //         HRate: random.nextInt(3000).toString()),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //   ],
+                  // ),
+
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

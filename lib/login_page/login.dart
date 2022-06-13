@@ -60,12 +60,17 @@ class _logInState extends State<logIn> {
             key: scaffoldKey,
             backgroundColor: Color(0xFFFFFFFF),
             body: Stack(
-              children: [Expanded(
+              children: [
+                Positioned(bottom: -550,left: -100,child: Align(alignment: Alignment.bottomCenter,child: Lottie.asset("assets/lottie_animations/blob01.json"),),)
+                //Positioned.fill(child: Align(alignment: Alignment.bottomCenter,child: Text("holla"),))
+                ,
+
+                Expanded(
 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 50,),
+                    SizedBox(height: 40,),
                     Form(
                       key: _formKey,
                       child: Column(
@@ -318,7 +323,8 @@ class _logInState extends State<logIn> {
                                     type: PageTransitionType.rightToLeft,
                                     duration: Duration(milliseconds: 300),
                                     reverseDuration: Duration(milliseconds: 300),
-                                    child: RegistrationPageWidget(),
+                                    //child: RegistrationPageWidget(),
+                                    child: HomePageWidget(),
                                   ),
                                 );
                               },
@@ -361,8 +367,6 @@ class _logInState extends State<logIn> {
                   ],
                 ),
               ),
-              Positioned(bottom: -550,left: -100,child: Align(alignment: Alignment.bottomCenter,child: Lottie.asset("assets/lottie_animations/blob01.json"),),)
-              //Positioned.fill(child: Align(alignment: Alignment.bottomCenter,child: Text("holla"),))
 
 
 

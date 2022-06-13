@@ -42,7 +42,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF6EFDE),
+      backgroundColor: Color(0xFFFFFFFF),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -101,7 +101,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 1,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF6EFDE),
+                  color: Color(0xFFFFFFFF),
                 ),
                 child: Form(
                   key: _formKey,

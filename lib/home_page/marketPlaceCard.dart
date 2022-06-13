@@ -24,7 +24,7 @@ Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,
         width: 150,
         height: 180,
         decoration: BoxDecoration(
-          color: Color(0xFF282828),
+          color: Color(0xFFF2F2F2),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
@@ -59,7 +59,7 @@ Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,
                   style:
                   FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Poppins',
-                    color: Colors.white,
+                    color: Colors.black87,
                   ),
                 ),
               ),
@@ -91,7 +91,7 @@ Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,
                   children: [
                     Icon(
                       Icons.location_on,
-                      color: Color(0xFFF6EFDE),
+                      color: Color(0xFF282828),
                       size: 15,
                     ),
                     Text(
@@ -100,7 +100,7 @@ Widget marketPlaceCard({double ratingValue,double ratingNo,BuildContext context,
                       style: FlutterFlowTheme.bodyText1
                           .override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFFF6EFDE),
+                        color: Color(0xFF282828),
                         fontSize: 12,
                       ),
                     ),
